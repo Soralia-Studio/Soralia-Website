@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
-  
+
   return (
     <nav className="bg-blue-900 text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
@@ -38,11 +38,10 @@ const NavLink: React.FC<NavLinkProps> = ({ href, active, children }) => {
   return (
     <Link
       href={href}
-      className={`transition duration-200 px-3 py-2 rounded-md ${
-        active 
-          ? 'bg-blue-800 font-medium' 
+      className={`transition duration-200 px-3 py-2 rounded-md ${active
+          ? 'bg-blue-800 font-medium'
           : 'hover:bg-blue-800'
-      }`}
+        }`}
     >
       {children}
     </Link>
