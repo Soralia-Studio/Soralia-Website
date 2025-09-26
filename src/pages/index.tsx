@@ -56,7 +56,7 @@ const Home: NextPage = () => {
                 {/* Logo container with actual image */}
                 <div className={styles.logo}>
                     <Image
-                        src="/placeholders/sora logo remake.png"
+                        src="/placeholders/soraalia.png"
                         alt="Soralia Logo"
                         width={500}
                         height={500}

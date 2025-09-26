@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 import "../styles/reset.css";
+import Nav from "@/components/Nav";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -27,28 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen m-0 p-0`}
+        className={`${poppins.variable} antialiased min-h-screen m-0 p-0 bg-gradient-to-br from-[#0f3a8a] to-[#0a2540]`}
         style={{ margin: 0, padding: 0 }}
       >
-        <nav className="bg-blue-900 text-white p-4 shadow-md">
-          <div className="container mx-auto flex justify-between items-center">
-            <Link href="/" className="text-xl font-bold">
-              Soralia
-            </Link>
-            <div className="flex space-x-6">
-              <Link href="/" className="transition duration-200 px-3 py-2 rounded-md hover:bg-blue-800">
-                Home
-              </Link>
-              <Link href="/tournaments" className="transition duration-200 px-3 py-2 rounded-md hover:bg-blue-800">
-                Tournaments
-              </Link>
-              <Link href="/staff" className="transition duration-200 px-3 py-2 rounded-md hover:bg-blue-800">
-                Staff
-              </Link>
-            </div>
-          </div>
-        </nav>
-        <main className="container mx-auto py-8 px-4">
+        <Nav />
+        <main>
           {children}
         </main>
       </body>

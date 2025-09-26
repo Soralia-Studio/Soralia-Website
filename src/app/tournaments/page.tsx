@@ -1,24 +1,123 @@
 import React from 'react';
-import Card from '@/components/Card';
-import { tournaments } from '@/data/data';
+import TournamentCard from '@/components/TournamentCard';
+import { Poppins } from 'next/font/google';
+
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const sampleTournaments = [
+  {
+    title: "TITLE XD",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    imageUrl: "/placeholder-tournament-1.jpg",
+  },
+  {
+    title: "TITLE XD",
+    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    imageUrl: "/placeholder-tournament-2.jpg",
+  },
+  {
+    title: "TITLE XD",
+    description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    imageUrl: "/placeholder-tournament-3.jpg",
+  },
+];
 
 export default function TournamentsPage() {
   return (
-    <div className="container mx-auto">
-      <h1 className="text-3xl font-bold text-blue-900 mb-8 text-center">Our Tournaments</h1>
+    <div className={poppins.className} style={{
+      minHeight: '100vh',
+      width: '100vw',
+      margin: 0,
+      padding: 0,
+      overflowX: 'hidden',
+      backgroundImage: 'url("/placeholders/Background.png")',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundAttachment: 'fixed',
+      color: 'white',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }}>
+      <nav style={{
+        width: '100%',
+        padding: '25px 0',
+        position: 'absolute',
+        top: 0,
+        background: 'transparent',
+        zIndex: 10,
+      }}>
+        <ul style={{
+          listStyle: 'none',
+          display: 'flex',
+          justifyContent: 'center',
+          margin: 0,
+          padding: 0,
+        }}>
+          <li style={{ margin: '0 30px', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 'bold', position: 'relative', padding: '5px 0' }}>
+            <a href="/" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>HOME</a>
+          </li>
+          <li style={{ margin: '0 30px', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 'bold', position: 'relative', padding: '5px 0' }}>
+            <a href="/tournaments" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>TOURNAMENTS</a>
+          </li>
+          <li style={{ margin: '0 30px', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 'bold', position: 'relative', padding: '5px 0' }}>
+            <a href="/staff" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>STAFF</a>
+          </li>
+        </ul>
+      </nav>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {tournaments.map((tournament) => (
-          <Card
-            key={tournament.id}
-            id={tournament.id}
-            title={tournament.title}
-            description={tournament.shortDescription}
-            imageUrl={tournament.mainImage}
-            linkHref={`/tournaments/${tournament.id}`}
-          />
-        ))}
-      </div>
+      <main style={{
+        margin: '80px 0 100px 0',
+        padding: '80px 0 100px 0',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        width: '100%',
+        textAlign: 'center',
+        position: 'relative',
+      }}>
+        <h1 style={{
+          fontSize: '2.5rem',
+          marginBottom: '30px',
+          marginTop: '-15px',
+          fontWeight: 600,
+          letterSpacing: '1px',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+        }}>Tournaments</h1>
+
+        <div style={{
+          textAlign: 'justify',
+          margin: '0 auto',
+          fontSize: '1.1rem',
+          lineHeight: '1.6',
+          width: '95%',
+          maxWidth: '800px',
+          position: 'relative',
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {sampleTournaments.map((tournament, index) => (
+              <TournamentCard
+                key={index}
+                title={tournament.title}
+                description={tournament.description}
+                imageUrl={tournament.imageUrl}
+              />
+            ))}
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
