@@ -17,12 +17,12 @@ export type Staff = {
 export const tournaments: Tournament[] = [
   {
     id: "1",
-    title: "Summer Championship 2025",
+    title: "TITLE XD",
     shortDescription:
-      "Annual summer gaming tournament with prizes up to $10,000",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget dolor quam. Suspendisse sit amet euismod quam. Donec venenatis euismod fermentum. Duis tincidunt consequat leo, nec dignissim tortor vehicula sed. Sed sed aliquet massa. Aenean finibus aliquam eros, viverra tincidu",
     fullDescription:
-      "The Summer Championship 2025 is our flagship annual gaming tournament featuring multiple games across different genres. With a prize pool of $10,000, this tournament attracts the best players from around the region. The event spans over three days with preliminary rounds, semi-finals, and finals. Spectators can enjoy food vendors, gaming merchandise booths, and meet-and-greet sessions with professional players.",
-    mainImage: "/placeholder-tournament-1.jpg",
+      "The MSOC Championship is our premier gaming tournament featuring top players and exciting matches. With a competitive prize pool and thrilling gameplay, this tournament showcases the best of competitive gaming.",
+    mainImage: "/tournaments/logo MSOC.png",
     galleryImages: [
       "/gallery-1-1.jpg",
       "/gallery-1-2.jpg",
@@ -30,40 +30,6 @@ export const tournaments: Tournament[] = [
       "/gallery-1-4.jpg",
       "/gallery-1-5.jpg",
       "/gallery-1-6.jpg",
-    ],
-  },
-  {
-    id: "2",
-    title: "Winter Gaming Festival",
-    shortDescription:
-      "Cozy indoor tournament with hot chocolate and fierce competition",
-    fullDescription:
-      "The Winter Gaming Festival is our seasonal indoor tournament designed to bring warmth to the cold months. Players compete in a friendly yet competitive environment with various gaming stations set up throughout the venue. The tournament features both team-based and individual competitions, with special events like cosplay contests and gaming trivia. Our signature hot chocolate bar and comfort food options make this a truly cozy gaming experience.",
-    mainImage: "/placeholder-tournament-2.jpg",
-    galleryImages: [
-      "/gallery-2-1.jpg",
-      "/gallery-2-2.jpg",
-      "/gallery-2-3.jpg",
-      "/gallery-2-4.jpg",
-      "/gallery-2-5.jpg",
-      "/gallery-2-6.jpg",
-    ],
-  },
-  {
-    id: "3",
-    title: "Indie Showcase Challenge",
-    shortDescription:
-      "Highlighting the best indie games with competitive gameplay",
-    fullDescription:
-      "The Indie Showcase Challenge focuses on celebrating independent game developers and their creations. This tournament features exclusively indie games across multiple platforms. Participants get to compete in newly released and upcoming indie titles, with the developers often in attendance to gather feedback and interact with players. This event helps bridge the gap between indie developers and gaming communities, offering exposure for innovative games and exciting competition for players.",
-    mainImage: "/placeholder-tournament-3.jpg",
-    galleryImages: [
-      "/gallery-3-1.jpg",
-      "/gallery-3-2.jpg",
-      "/gallery-3-3.jpg",
-      "/gallery-3-4.jpg",
-      "/gallery-3-5.jpg",
-      "/gallery-3-6.jpg",
     ],
   },
 ];

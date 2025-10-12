@@ -1,5 +1,6 @@
 import React from 'react';
 import TournamentCard from '@/components/TournamentCard';
+import { tournaments } from '@/data/data';
 import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
@@ -7,24 +8,6 @@ const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
 });
-
-const sampleTournaments = [
-  {
-    title: "TITLE XD",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    imageUrl: "/placeholder-tournament-1.jpg",
-  },
-  {
-    title: "TITLE XD",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: "/placeholder-tournament-2.jpg",
-  },
-  {
-    title: "TITLE XD",
-    description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-    imageUrl: "/placeholder-tournament-3.jpg",
-  },
-];
 
 export default function TournamentsPage() {
   return (
@@ -67,7 +50,7 @@ export default function TournamentsPage() {
           <li style={{ margin: '0 30px', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 'bold', position: 'relative', padding: '5px 0' }}>
             <a href="/" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>HOME</a>
           </li>
-          <li style={{ margin: '0 30px', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 'bold', position: 'relative', padding: '5px 0' }}>
+          <li style={{ margin: '0 30px', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 'bold', position: 'relative', padding: '5px 0', borderBottom: '2px solid white' }}>
             <a href="/tournaments" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>TOURNAMENTS</a>
           </li>
           <li style={{ margin: '0 30px', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 'bold', position: 'relative', padding: '5px 0' }}>
@@ -107,12 +90,13 @@ export default function TournamentsPage() {
           position: 'relative',
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            {sampleTournaments.map((tournament, index) => (
+            {tournaments.map((tournament) => (
               <TournamentCard
-                key={index}
+                key={tournament.id}
+                id={tournament.id}
                 title={tournament.title}
-                description={tournament.description}
-                imageUrl={tournament.imageUrl}
+                description={tournament.shortDescription}
+                imageUrl={tournament.mainImage}
               />
             ))}
           </div>
