@@ -1,25 +1,54 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 type StaffCardProps = {
   name: string;
   role: string;
   avatarUrl: string;
+  backgroundUrl?: string;
 };
 
-const StaffCard: React.FC<StaffCardProps> = ({ name, role, avatarUrl }) => {
+const StaffCard: React.FC<StaffCardProps> = ({
+  name,
+  role,
+  avatarUrl,
+  backgroundUrl = "/default-bg.jpg", // fallback background
+}) => {
   return (
-    <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center">
-      <div className="relative w-32 h-32 mb-4">
+    <div className="relative w-full max-w-2xl rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+      {/* Background image */}
+      <div className="relative h-28 w-full">
         <Image
-          src={avatarUrl}
-          alt={`${name} avatar`}
+          src={backgroundUrl}
+          alt="Background"
           fill
-          className="rounded-full object-cover border-4 border-blue-900"
+          className="object-cover brightness-75"
         />
       </div>
-      <h3 className="text-xl font-bold text-blue-900">{name}</h3>
-      <p className="text-gray-600">{role}</p>
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent flex items-center px-5">
+        {/* Avatar + Info */}
+        <div className="flex items-center space-x-4">
+          {/* Avatar */}
+          <div className="relative w-14 h-14 rounded-lg overflow-hidden border-2 border-white shadow-md">
+            <Image
+              src={avatarUrl}
+              alt={`${name} avatar`}
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Text */}
+          <div>
+            <h3 className="text-white text-xl font-bold leading-tight">
+              {name}
+            </h3>
+            <p className="text-gray-200 text-sm">{role}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
