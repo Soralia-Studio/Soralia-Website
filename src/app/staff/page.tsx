@@ -1,6 +1,6 @@
 import React from 'react';
 import StaffCard from '@/components/StaffCard';
-import { staffMembers } from '@/data/data';
+import { staffMembers } from '../../data/data';
 
 export default function StaffPage() {
   return (
@@ -14,6 +14,7 @@ export default function StaffPage() {
             name={staff.name}
             role={staff.role}
             avatarUrl={staff.avatarUrl}
+            bannerUrl={staff.bannerUrl}
           />
         ))}
       </div>

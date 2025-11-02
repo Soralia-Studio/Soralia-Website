@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { tournaments } from '@/data/data';
+import { tournaments } from '../../../data/data';
 import { notFound } from 'next/navigation';
 import { Poppins } from 'next/font/google';
 

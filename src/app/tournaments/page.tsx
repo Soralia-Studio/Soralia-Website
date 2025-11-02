@@ -1,6 +1,6 @@
 import React from 'react';
 import TournamentCard from '@/components/TournamentCard';
-import { tournaments } from '@/data/data';
+import { tournaments } from '../../data/data';
 import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({

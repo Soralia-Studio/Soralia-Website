@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { tournaments } from '@/data/data';
+import { tournaments } from '../../data/data';
 import { usePageContext } from '@/context/PageContext';
 
 export default function TournamentDetailPage() {
