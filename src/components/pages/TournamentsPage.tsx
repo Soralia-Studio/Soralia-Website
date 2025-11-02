@@ -2,7 +2,7 @@
 
 import React from 'react';
 import TournamentCard from '@/components/TournamentCard';
-import { tournaments } from '@/data/data';
+import { tournaments } from '../../data/data';
 import { usePageContext } from '@/context/PageContext';
 
 export default function TournamentsPage() {
