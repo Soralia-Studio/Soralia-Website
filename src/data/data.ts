@@ -38,65 +38,65 @@ export const tournaments: Tournament[] = [
 export const staffMembers: Staff[] = [
   {
     id: "1",
-    name: "Alex Chen",
+    name: "Rimuru",
     role: "Tournament Director",
     avatarUrl: "/avatar-1.png",
-    bannerUrl: "/banner-1.png"
+    bannerUrl: "/banner-2.png"
   },
   {
     id: "2",
-    name: "Maria Rodriguez",
+    name: "Rimuru",
     role: "Event Coordinator",
     avatarUrl: "/avatar-2.png",
-    bannerUrl: "/banner-2.jpg"
+    bannerUrl: "/banner-2.png"
   },
   {
     id: "3",
-    name: "James Wilson",
+    name: "Rimuru",
     role: "Technical Support Lead",
     avatarUrl: "/avatar-3.png",
-    bannerUrl: "/banner-2.jpg"
+    bannerUrl: "/banner-2.png"
   },
   {
     id: "4",
-    name: "Sophia Kim",
+    name: "Rimuru",
     role: "Marketing Manager",
     avatarUrl: "/avatar-1.png",
-    bannerUrl: "/banner-2.jpg"
+    bannerUrl: "/banner-2.png"
   },
   {
     id: "5",
-    name: "David Patel",
+    name: "Rimuru",
     role: "Game Administrator",
     avatarUrl: "/avatar-2.png",
-    bannerUrl: "/banner-2.jpg"
+    bannerUrl: "/banner-2.png"
   },
   {
     id: "6",
-    name: "Emma Johnson",
+    name: "Rimuru",
     role: "Community Manager",
     avatarUrl: "/avatar-3.png",
-    bannerUrl: "/banner-2.jpg"
+    bannerUrl: "/banner-2.png"
   },
   {
     id: "7",
-    name: "Michael Zhang",
+    name: "Rimuru",
     role: "Broadcast Director",
     avatarUrl: "/avatar-1.png",
-    bannerUrl: "/banner-2.jpg"
+    bannerUrl: "/banner-2.png"
   },
   {
     id: "8",
-    name: "Olivia Thompson",
+    name: "Rimuru",
     role: "Player Relations",
     avatarUrl: "/avatar-2.png",
-    bannerUrl: "/banner-2.jpg"
+    bannerUrl: "/banner-2.png"
   },
   {
     id: "9",
     name: "Hotome Shiki",
     role: "Player Relations",
     avatarUrl: "/avatar-3.png",
-    bannerUrl: "/banner-2.jpg"
+    bannerUrl: "/banner-2.png"
   },
 ];

@@ -10,48 +10,41 @@ type StaffCardProps = {
 
 const StaffCard: React.FC<StaffCardProps> = ({ name, role, avatarUrl, bannerUrl }) => {
 
+  /*
+      TODO:
+      - Fix font issues
+      - Fix avatar position
+      - Add hover effects (done)
+   */
+
   return (
-    // <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center">
-    //   <div className="relative w-32 h-32 mb-4">
-    //     <Image
-    //       src={avatarUrl}
-    //       alt={`${name} avatar`}
-    //       fill
-    //       className="rounded-full object-cover border-4 border-blue-900"
-    //     />
-    //   </div>
-    //   <h3 className="text-xl font-bold text-blue-900">{name}</h3>
-    //   <p className="text-gray-600">{role}</p>
-    // </div>
-
-    <div className="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 h-24">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image 
+    <div className="border-2 border-amber-50 container relative hover:scale-105 transition-transform duration-300 ease-in-out">
+      {/* Banner */}
+      <div className='w-full h-12 relative rounded-lg overflow-hidden shadow-lg'>
+        <Image
           src={bannerUrl}
-          alt={`${name} banner`}
+          alt={`${name} Banner`}
           fill
-          className="object-cover"
+          className='object-cover object-center'
         />
-      </div>
 
-      {/* Gradient Overlay - dark on left, transparent on right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent" />
+        {/* Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black to-transparent"></div>
 
-      {/* Content */}
-      <div className="relative h-full flex items-center gap-3 px-4">
-        <div className="relative w-16 h-16 flex-shrink-0">
-          <Image 
-            src={avatarUrl}
-            alt={`${name} avatar`}
-            fill
-            className="border-2 object-cover border-amber-50 rounded-sm"
-          />
-        </div>
+        {/* Avatar and Info */}
+        <div className='relative flex items-center gap-3'>
+          <div className="relative w-12 h-12">
+            <Image 
+              src={avatarUrl}
+              alt={`${name} Avatar`}
+              fill
+            />
+          </div>
 
-        <div className="flex flex-col justify-center items-start">
-          <h3 className="text-xl font-bold text-white leading-tight">{name}</h3>
-          <p className="text-sm text-gray-300">{role}</p>
+          <div className="relative flex flex-col justify-center items-start">
+            <div className="text-2xl font-bold text-white leading-tight">{name} </div>
+            <div className="text-sm">{role}</div>
+          </div>
         </div>
       </div>
     </div>

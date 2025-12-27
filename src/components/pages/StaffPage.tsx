@@ -12,7 +12,7 @@ export default function StaffPage() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
             height: '100vh',
             width: '100%',
             textAlign: 'center',
@@ -29,10 +29,11 @@ export default function StaffPage() {
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                gap: '30px',
+                gap: '1rem',
                 maxWidth: '1200px',
                 width: '90%',
                 margin: '0 auto',
+                gridAutoFlow: 'row',
             }}>
                 {staffMembers.map((staff) => (
                     <StaffCard
