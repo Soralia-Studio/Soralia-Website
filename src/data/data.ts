@@ -100,3 +100,7 @@ export const staffMembers: Staff[] = [
     bannerUrl: "/banner-2.png"
   },
 ];
+
+export const xaxalele = {
+  boxGlitch: "/Box_glitch_1.png",
+}
