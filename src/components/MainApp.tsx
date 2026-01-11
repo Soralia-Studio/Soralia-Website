@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { PageProvider } from '@/context/PageContext';
 import NavigationBar from '@/components/NavigationBar';
 import PageContainer from '@/components/PageContainer';
@@ -12,9 +12,33 @@ const poppins = Poppins({
     display: 'swap',
 });
 
+/**
+ * MainApp Component
+ */
 export default function MainApp() {
+    const [showLogo, setShowLogo] = useState(false);
+    const [showNavbar, setShowNavbar] = useState(false);
+
+    useEffect(() => {
+        // Step 1: Logo fade in immediately
+        const logoTimer = setTimeout(() => {
+            setShowLogo(true);
+        }, 300);
+
+        // Step 2: Navbar fade in after logo (1s delay)
+        const navbarTimer = setTimeout(() => {
+            setShowNavbar(true);
+        }, 1300);
+
+        return () => {
+            clearTimeout(logoTimer);
+            clearTimeout(navbarTimer);
+        };
+    }, []);
+
     return (
         <PageProvider>
+            {/* Main content - ALWAYS rendered underneath */}
             <div
                 className={poppins.className}
                 style={{
@@ -37,10 +61,21 @@ export default function MainApp() {
                     left: 0,
                     right: 0,
                     bottom: 0,
+                    zIndex: 1,
                 }}
             >
-                <NavigationBar />
-                <PageContainer />
+                {/* Navigation bar - fade in after logo */}
+                <NavigationBar fadeIn={showNavbar} />
+
+                {/* Page content - logo fades in first */}
+                <div style={{
+                    opacity: showLogo ? 1 : 0,
+                    transition: 'opacity 1s ease-out',
+                    width: '100%',
+                    height: '100%',
+                }}>
+                    <PageContainer />
+                </div>
             </div>
         </PageProvider>
     );

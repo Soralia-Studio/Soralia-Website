@@ -66,35 +66,56 @@ export default function TournamentDetailPage() {
                 marginBottom: '40px',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
             }}>
-                <h2 style={{
-                    fontSize: '1.2rem',
-                    fontWeight: 600,
-                    marginBottom: '15px',
-                }}>
-                    (Short summary + top 3)
-                </h2>
                 <p style={{
                     fontSize: '1rem',
                     lineHeight: '1.7',
                     color: 'rgba(255, 255, 255, 0.9)',
+                    whiteSpace: 'pre-line',
                 }}>
                     {tournament.fullDescription}
                 </p>
             </div>
 
-            {/* Video Placeholder */}
-            <div style={{
-                backgroundColor: 'rgba(200, 200, 200, 0.9)',
-                height: '400px',
-                borderRadius: '16px',
-                marginBottom: '40px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '2px solid rgba(255, 255, 255, 0.2)',
-            }}>
-                <span style={{ color: '#666', fontSize: '1.2rem' }}>Video Placeholder</span>
-            </div>
+            {/* Video Section */}
+            {tournament.videoUrl ? (
+                <div style={{
+                    position: 'relative',
+                    width: '100%',
+                    paddingBottom: '56.25%', // 16:9 Aspect Ratio
+                    height: 0,
+                    borderRadius: '16px',
+                    marginBottom: '40px',
+                    overflow: 'hidden',
+                    border: '2px solid rgba(255, 255, 255, 0.2)',
+                }}>
+                    <iframe
+                        style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                        }}
+                        src={`https://www.youtube.com/embed/${tournament.videoUrl.split('v=')[1]?.split('&')[0]}`}
+                        title="Tournament Video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    />
+                </div>
+            ) : (
+                <div style={{
+                    backgroundColor: 'rgba(200, 200, 200, 0.9)',
+                    height: '400px',
+                    borderRadius: '16px',
+                    marginBottom: '40px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '2px solid rgba(255, 255, 255, 0.2)',
+                }}>
+                    <span style={{ color: '#666', fontSize: '1.2rem' }}>Video Placeholder</span>
+                </div>
+            )}
 
             {/* Gallery Section */}
             <h2 style={{

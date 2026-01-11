@@ -5,6 +5,7 @@ export type Tournament = {
   fullDescription: string;
   mainImage: string;
   galleryImages: string[];
+  videoUrl?: string;
 };
 
 export type Staff = {
@@ -18,11 +19,12 @@ export type Staff = {
 export const tournaments: Tournament[] = [
   {
     id: "1",
-    title: "TITLE XD",
+    title: "MSOC Tournament",
     shortDescription:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget dolor quam. Suspendisse sit amet euismod quam. Donec venenatis euismod fermentum. Duis tincidunt consequat leo, nec dignissim tortor vehicula sed. Sed sed aliquet massa. Aenean finibus aliquam eros, viverra tincidu",
+      "MSOC (MAIMAI STUDENT OPEN CUP) – The Student Showdown! Hosted at Dream Games Tan Phu, students represent their schools in a unique 1v1 (Team up 4) stamina format to claim the championship",
     fullDescription:
-      "The MSOC Championship is our premier gaming tournament featuring top players and exciting matches. With a competitive prize pool and thrilling gameplay, this tournament showcases the best of competitive gaming.",
+      "Organized by Area 57 Studio at Dream Games Tan Phu, MSOC is a dedicated rhythm game tournament for students. Featuring a unique 1v1 (Team up 4) stamina format, the event successfully brought together competitive teams representing various high schools and universities for an intense showdown.\n\nTOP 3 WINNERS\n\n• Champion: Team GLHF (SGU, NTTU, Pham Phu Thu HS, TDTU)\n• Runner-up: Team maimai.py (UIT)\n• 3rd Place: Team SoiCoDoc (HCMUTE, VHU, VSVC)",
+    videoUrl: "https://www.youtube.com/watch?v=Rj9NVKV2Ozk",
     mainImage: "/tournaments/logo MSOC.png",
     galleryImages: [
       "/gallery-1-1.jpg",
@@ -41,66 +43,66 @@ export const staffMembers: Staff[] = [
     name: "Rimuru",
     role: "Tournament Director",
     avatarUrl: "/avatar-1.png",
-    bannerUrl: "/banner-2.png"
+    bannerUrl: "/banner-2.png",
   },
   {
     id: "2",
     name: "Rimuru",
     role: "Event Coordinator",
     avatarUrl: "/avatar-2.png",
-    bannerUrl: "/banner-2.png"
+    bannerUrl: "/banner-2.png",
   },
   {
     id: "3",
     name: "Rimuru",
     role: "Technical Support Lead",
     avatarUrl: "/avatar-3.png",
-    bannerUrl: "/banner-2.png"
+    bannerUrl: "/banner-2.png",
   },
   {
     id: "4",
     name: "Rimuru",
     role: "Marketing Manager",
     avatarUrl: "/avatar-1.png",
-    bannerUrl: "/banner-2.png"
+    bannerUrl: "/banner-2.png",
   },
   {
     id: "5",
     name: "Rimuru",
     role: "Game Administrator",
     avatarUrl: "/avatar-2.png",
-    bannerUrl: "/banner-2.png"
+    bannerUrl: "/banner-2.png",
   },
   {
     id: "6",
     name: "Rimuru",
     role: "Community Manager",
     avatarUrl: "/avatar-3.png",
-    bannerUrl: "/banner-2.png"
+    bannerUrl: "/banner-2.png",
   },
   {
     id: "7",
     name: "Rimuru",
     role: "Broadcast Director",
     avatarUrl: "/avatar-1.png",
-    bannerUrl: "/banner-2.png"
+    bannerUrl: "/banner-2.png",
   },
   {
     id: "8",
     name: "Rimuru",
     role: "Player Relations",
     avatarUrl: "/avatar-2.png",
-    bannerUrl: "/banner-2.png"
+    bannerUrl: "/banner-2.png",
   },
   {
     id: "9",
     name: "Hotome Shiki",
     role: "Player Relations",
     avatarUrl: "/avatar-3.png",
-    bannerUrl: "/banner-2.png"
+    bannerUrl: "/banner-2.png",
   },
 ];
 
 export const xaxalele = {
   boxGlitch: "/Box_glitch_1.png",
-}
+};

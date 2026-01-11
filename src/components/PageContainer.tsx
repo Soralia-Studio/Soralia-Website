@@ -7,6 +7,12 @@ import TournamentsPage from './pages/TournamentsPage';
 import StaffPage from './pages/StaffPage';
 import TournamentDetailPage from './pages/TournamentDetailPage';
 
+/**
+ * PageContainer Component
+ * 
+ * Container that renders the current page based on navigation state.
+ * Handles page transitions with opacity animation.
+ */
 export default function PageContainer() {
     const { currentPage, isTransitioning } = usePageContext();
 

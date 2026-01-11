@@ -3,7 +3,21 @@
 import React from 'react';
 import { usePageContext, PageType } from '@/context/PageContext';
 
-export default function NavigationBar() {
+/**
+ * NavigationBar Props
+ */
+interface NavigationBarProps {
+    /** Controls fade-in animation from top after intro completes */
+    fadeIn?: boolean;
+}
+
+/**
+ * NavigationBar Component
+ * 
+ * Main navigation bar with page links.
+ * Supports fade-in animation from top when fadeIn prop changes.
+ */
+export default function NavigationBar({ fadeIn = true }: NavigationBarProps) {
     const { currentPage, setCurrentPage, setIsTransitioning } = usePageContext();
 
     const navigateTo = (page: PageType) => {
@@ -32,6 +46,10 @@ export default function NavigationBar() {
             top: 0,
             background: 'transparent',
             zIndex: 10,
+            // Fade-in from top animation
+            opacity: fadeIn ? 1 : 0,
+            transform: fadeIn ? 'translateY(0)' : 'translateY(-30px)',
+            transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
         }}>
             <ul style={{
                 listStyle: 'none',
