@@ -3,6 +3,7 @@ export type Tournament = {
   title: string;
   shortDescription: string;
   fullDescription: string;
+  videoHolder: string;
   mainImage: string;
   galleryImages: string[];
 };
@@ -23,14 +24,15 @@ export const tournaments: Tournament[] = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget dolor quam. Suspendisse sit amet euismod quam. Donec venenatis euismod fermentum. Duis tincidunt consequat leo, nec dignissim tortor vehicula sed. Sed sed aliquet massa. Aenean finibus aliquam eros, viverra tincidu",
     fullDescription:
       "The MSOC Championship is our premier gaming tournament featuring top players and exciting matches. With a competitive prize pool and thrilling gameplay, this tournament showcases the best of competitive gaming.",
+    videoHolder: "https://www.youtube.com/embed/Rj9NVKV2Ozk?si=cPVtWG1xNupR9Z7z",
     mainImage: "/tournaments/logo MSOC.png",
     galleryImages: [
-      "/gallery-1-1.jpg",
-      "/gallery-1-2.jpg",
-      "/gallery-1-3.jpg",
-      "/gallery-1-4.jpg",
-      "/gallery-1-5.jpg",
-      "/gallery-1-6.jpg",
+      "https://picsum.photos/400/400?random=1",
+      "https://picsum.photos/800/450?random=3",
+      "https://picsum.photos/400/600?random=4",
+      "https://picsum.photos/450/800?random=5",
+      "https://picsum.photos/350/900?random=7",
+      "https://picsum.photos/450/800?random=6",
     ],
   },
 ];

@@ -143,38 +143,6 @@ export default function TournamentDetailPage() {
                     </div>
                 ))}
             </Masonry>
-
-            {/* <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-                gap: '15px',
-                marginBottom: '30px',
-            }}>
-                {tournament.galleryImages.map((imageUrl, index) => (
-                    <div key={index} style={{
-                        position: 'relative',
-                        width: '100%',
-                        paddingBottom: '100%',
-                        backgroundColor: 'rgba(200, 200, 200, 0.9)',
-                        borderRadius: '8px',
-                        overflow: 'hidden',
-                        border: '1px solid rgba(255, 255, 255, 0.2)',
-                    }}>
-                        <img
-                            src={imageUrl}
-                            alt={`Gallery ${index + 1}`}
-                            style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover',
-                            }}
-                        />
-                    </div>
-                ))}
-            </div> */}
         </main>
     );
 }
