@@ -4,9 +4,17 @@ import React from 'react';
 import Image from 'next/image';
 import { tournaments } from '../../data/data';
 import { usePageContext } from '@/context/PageContext';
+import Masonry from 'react-masonry-css';
 
 export default function TournamentDetailPage() {
     const { selectedTournamentId } = usePageContext();
+
+    const masonryBreakpoints = {
+        default: 4,
+        1200: 3,
+        800: 2,
+        500: 1,
+    }
 
     const tournament = tournaments.find((t) => t.id === selectedTournamentId);
 
@@ -33,13 +41,12 @@ export default function TournamentDetailPage() {
                     height: '360px',
                     borderRadius: '12px',
                     overflow: 'hidden',
-                    border: '2px solid rgba(255, 255, 255, 0.2)',
                 }}>
                     <Image
                         src={tournament.mainImage}
                         alt={tournament.title}
+                        className="object-contain scale-125"
                         fill
-                        className="object-cover"
                         priority
                     />
                 </div>
@@ -84,16 +91,25 @@ export default function TournamentDetailPage() {
 
             {/* Video Placeholder */}
             <div style={{
-                backgroundColor: 'rgba(200, 200, 200, 0.9)',
-                height: '400px',
-                borderRadius: '16px',
-                marginBottom: '40px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '2px solid rgba(255, 255, 255, 0.2)',
+            width: '100%',
+            maxWidth: '900px',
+            aspectRatio: '16 / 9',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            marginBottom: '40px',
+            border: '2px solid rgba(255, 255, 255, 0.2)',
             }}>
-                <span style={{ color: '#666', fontSize: '1.2rem' }}>Video Placeholder</span>
+            <iframe
+                src={tournament.videoHolder}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{
+                    width: '100%',
+                    height: '100%',
+                    border: '0',
+                }}
+            />
             </div>
 
             {/* Gallery Section */}
@@ -107,40 +123,58 @@ export default function TournamentDetailPage() {
                 GALLERY
             </h2>
 
-            <div style={{
+            <Masonry
+                breakpointCols={masonryBreakpoints}
+                className="flex gap-2"
+                columnClassName=""
+            >
+                {tournament.galleryImages.map((imageUrl, index) => (
+                    <div
+                        key={index}
+                    >
+                        <img src={imageUrl} alt={`Gallery ${index + 1}`} 
+                            style={{
+                                width: '100%',
+                                marginBottom: '15px',
+                                borderRadius: '8px',
+                                border: '1px solid rgba(255, 255, 255, 0.2)',
+                            }}
+                        />
+                    </div>
+                ))}
+            </Masonry>
+
+            {/* <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(5, 1fr)',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
                 gap: '15px',
                 marginBottom: '30px',
             }}>
-                {Array.from({ length: 15 }).map((_, index) => (
-                    <div
-                        key={index}
-                        style={{
-                            position: 'relative',
-                            width: '100%',
-                            paddingBottom: '100%',
-                            backgroundColor: 'rgba(200, 200, 200, 0.9)',
-                            borderRadius: '8px',
-                            overflow: 'hidden',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
-                        }}
-                    >
-                        <div style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                        }}>
-                            <span style={{ color: '#666', fontSize: '0.8rem' }}>Gallery {index + 1}</span>
-                        </div>
+                {tournament.galleryImages.map((imageUrl, index) => (
+                    <div key={index} style={{
+                        position: 'relative',
+                        width: '100%',
+                        paddingBottom: '100%',
+                        backgroundColor: 'rgba(200, 200, 200, 0.9)',
+                        borderRadius: '8px',
+                        overflow: 'hidden',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                    }}>
+                        <img
+                            src={imageUrl}
+                            alt={`Gallery ${index + 1}`}
+                            style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                            }}
+                        />
                     </div>
                 ))}
-            </div>
+            </div> */}
         </main>
     );
 }
