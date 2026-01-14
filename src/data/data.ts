@@ -40,67 +40,123 @@ export const tournaments: Tournament[] = [
 export const staffMembers: Staff[] = [
   {
     id: "1",
-    name: "Rimuru",
-    role: "Tournament Director",
-    avatarUrl: "/avatar-1.png",
-    bannerUrl: "/banner-2.png"
+    name: "Hidr0",
+    role: "Team Leader",
+    avatarUrl: "/Staff/Avatar/hidro.png",
+    bannerUrl: "/Staff/Banner/hidro.gif"
   },
   {
     id: "2",
-    name: "Rimuru",
-    role: "Event Coordinator",
-    avatarUrl: "/avatar-2.png",
-    bannerUrl: "/banner-2.png"
+    name: "Flandoruu",
+    role: "Designer",
+    avatarUrl: "/Staff/Avatar/flandoruu.png",
+    bannerUrl: "/Staff/Banner/flandoruu.png"
   },
   {
     id: "3",
-    name: "Rimuru",
-    role: "Technical Support Lead",
-    avatarUrl: "/avatar-3.png",
-    bannerUrl: "/banner-2.png"
+    name: "NepChon",
+    role: "Designer",
+    avatarUrl: "/Staff/Avatar/nepchon.png",
+    bannerUrl: "/Staff/Banner/nepchon.png"
   },
   {
     id: "4",
-    name: "Rimuru",
-    role: "Marketing Manager",
-    avatarUrl: "/avatar-1.png",
-    bannerUrl: "/banner-2.png"
+    name: "Hourai",
+    role: "Artist",
+    avatarUrl: "/Staff/Avatar/hourai.png",
+    bannerUrl: "/Staff/Banner/hourai.png"
   },
   {
     id: "5",
-    name: "Rimuru",
-    role: "Game Administrator",
-    avatarUrl: "/avatar-2.png",
-    bannerUrl: "/banner-2.png"
+    name: "BrianDM",
+    role: "Artist",
+    avatarUrl: "/Staff/Avatar/brian.png",
+    bannerUrl: "/Staff/Banner/brian.jpg"
   },
   {
     id: "6",
-    name: "Rimuru",
-    role: "Community Manager",
-    avatarUrl: "/avatar-3.png",
-    bannerUrl: "/banner-2.png"
+    name: "Shiki",
+    role: "Developer",
+    avatarUrl: "/Staff/Avatar/shiki.jpg",
+    bannerUrl: "/Staff/Banner/shiki.jpg"
   },
   {
     id: "7",
-    name: "Rimuru",
-    role: "Broadcast Director",
-    avatarUrl: "/avatar-1.png",
-    bannerUrl: "/banner-2.png"
+    name: "Lotus",
+    role: "Developer",
+    avatarUrl: "/Staff/Avatar/lotus.png",
+    bannerUrl: "/Staff/Banner/lotus.png"
   },
   {
     id: "8",
-    name: "Rimuru",
-    role: "Player Relations",
-    avatarUrl: "/avatar-2.png",
-    bannerUrl: "/banner-2.png"
+    name: "Necros1s",
+    role: "Developer",
+    avatarUrl: "/Staff/Avatar/necros1s.jpg",
+    bannerUrl: "/Staff/Banner/necros1s.png"
   },
   {
     id: "9",
-    name: "Hotome Shiki",
-    role: "Player Relations",
-    avatarUrl: "/avatar-3.png",
-    bannerUrl: "/banner-2.png"
+    name: "giabao06",
+    role: "Developer",
+    avatarUrl: "/Staff/Avatar/giabao06.png",
+    bannerUrl: "/Staff/Banner/giabao06.png"
   },
+  {
+    id: "10",
+    name: "Foxeiz",
+    role: "Developer",
+    avatarUrl: "/Staff/Avatar/foxeiz.jpg",
+    bannerUrl: "/Staff/Banner/foxeiz.jpg"
+  },
+  {
+    id: "11",
+    name: "Shard",
+    role: "Developer",
+    avatarUrl: "/Staff/Avatar/shard.jpg",
+    bannerUrl: "/Staff/Banner/shard.jpg"
+  },
+  {
+    id: "12",
+    name: "Swyrin",
+    role: "Adviser",
+    avatarUrl: "/Staff/Avatar/swyrin.jpg",
+    bannerUrl: "/Staff/Banner/swyrin.png"
+  },
+  {
+    id: "13",
+    name: "AkaneOSK",
+    role: "MC",
+    avatarUrl: "/Staff/Avatar/akaneosk.png",
+    bannerUrl: "/Staff/Banner/akaneosk.png"
+  },
+  {
+    id: "14",
+    name: "- Fubukiii",
+    role: "MC",
+    avatarUrl: "/Staff/Avatar/fbk.png",
+    bannerUrl: "/Staff/Banner/fbk.gif"
+  },
+  {
+    id: "15",
+    name: "Hyu",
+    role: "Videographer",
+    avatarUrl: "/Staff/Avatar/hyu.png",
+    bannerUrl: "/Staff/Banner/hyu.png"
+  },
+  {
+    id: "16",
+    name: "Kino",
+    role: "Staff",
+    avatarUrl: "/Staff/Avatar/kino.png",
+    bannerUrl: "/Staff/Banner/kino.jpg"
+  },
+  {
+    id: "17",
+    name: "Nguwuyn",
+    role: "Poller",
+    avatarUrl: "/Staff/Avatar/nguwuyn.png",
+    bannerUrl: "/Staff/Banner/nguwuyn.png"
+  }
 ];
 
 export const xaxalele = {
