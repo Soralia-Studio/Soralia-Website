@@ -18,24 +18,11 @@ const StaffCard: React.FC<StaffCardProps> = ({ name, role, avatarUrl, bannerUrl 
    */
 
   return (
-<<<<<<< HEAD
-    <div className="container relative hover:scale-105 transition-transform duration-300 ease-in-out" style={{
-      border: '2px solid white',
-      borderRadius: '15px',
-      overflow: 'hidden',
-      backgroundColor: 'white'
-    }}>
-      
-      <div className='relative flex shrink-0 items-center p-1'>
-        {/* Avatar and Info */}
-        <div className="relative w-12 h-12 overflow-hidden">
-=======
     <div className="container relative hover:scale-105 transition-transform duration-300 ease-in-out">
       
       <div className='relative flex shrink-0 items-center p-1'>
         {/* Avatar and Info */}
         <div className="bg-white relative w-12 h-12 overflow-hidden rounded-l-lg">
->>>>>>> 4cbc121 (Refactor (Staff Card): Update layout and visual design)
           <Image 
             src={avatarUrl}
             alt={`${name} Avatar`}
@@ -50,11 +37,7 @@ const StaffCard: React.FC<StaffCardProps> = ({ name, role, avatarUrl, bannerUrl 
             src={bannerUrl}
             alt={`${name} Banner`}
             fill
-<<<<<<< HEAD
-            className='object-cover'
-=======
             className='object-cover rounded-r-lg'
->>>>>>> 4cbc121 (Refactor (Staff Card): Update layout and visual design)
           />
           
           {/* Gradient */}
