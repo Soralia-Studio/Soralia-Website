@@ -19,7 +19,7 @@ class GalleryGenerator {
     }
 
     public static generateGallery() {
-        let output : Record<string, string[]> = {};
+        const output : Record<string, string[]> = {};
 
         logger.info('Starting gallery generation...');
 
