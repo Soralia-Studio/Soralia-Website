@@ -160,3 +160,15 @@ export const staffMembers: Staff[] = [
 export const xaxalele = {
   boxGlitch: "/Box_glitch_1.png",
 };
+
+export const cafe = {
+  image: "/cafe.jpg",
+}
+
+export const motd: string[] = [
+  "This week is very special",
+  "Cha m map",
+  "Me may beo",
+  "Click me!",
+  "WHAT THE FUCK IS THE KILOMETERS \🦅"
+]
