@@ -5,7 +5,11 @@ export type Tournament = {
   fullDescription: string;
   videoHolder: string;
   mainImage: string;
-  galleryImages: string[];
+  galleryImagesPath: string;
+  record: {
+    groupPhoto: string;
+    topThreePhoto: string[]; 
+  }
 };
 
 export type Staff = {
@@ -19,22 +23,23 @@ export type Staff = {
 export const tournaments: Tournament[] = [
   {
     id: "1",
-    title: "TITLE XD",
+    title: "MSOC",
     shortDescription:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget dolor quam. Suspendisse sit amet euismod quam. Donec venenatis euismod fermentum. Duis tincidunt consequat leo, nec dignissim tortor vehicula sed. Sed sed aliquet massa. Aenean finibus aliquam eros, viverra tincidu",
+      "MSOC (MAIMAI STUDENT OPEN CUP) – The Student Showdown! Hosted at Dream Games Tan Phu, students represent their schools in a unique 1v1 (Team up 4) stamina format to claim the championship",
     fullDescription:
-      "The MSOC Championship is our premier gaming tournament featuring top players and exciting matches. With a competitive prize pool and thrilling gameplay, this tournament showcases the best of competitive gaming.",
+      "Organized by Area 57 Studio at Dream Games Tan Phu, MSOC is a dedicated rhythm game tournament for students. Featuring a unique 1v1 (Team up 4) stamina format, the event successfully brought together competitive teams representing various high schools and universities for an intense showdown.\n\nTOP 3 WINNERS\n\n• Champion: Team GLHF (SGU, NTTU, Pham Phu Thu HS, TDTU)\n• Runner-up: Team maimai.py (UIT)\n• 3rd Place: Team SoiCoDoc (HCMUTE, VHU, VSVC)",
     videoHolder: "https://www.youtube.com/embed/Rj9NVKV2Ozk?si=cPVtWG1xNupR9Z7z",
-    mainImage: "/tournaments/logo MSOC.png",
-    galleryImages: [
-      "https://picsum.photos/400/400?random=1",
-      "https://picsum.photos/800/450?random=3",
-      "https://picsum.photos/400/600?random=4",
-      "https://picsum.photos/450/800?random=5",
-      "https://picsum.photos/350/900?random=7",
-      "https://picsum.photos/450/800?random=6",
-    ],
-  },
+    mainImage: "/tournaments/MSOC/logo MSOC.png",
+    galleryImagesPath: "/tournaments/MSOC/gallery",
+    record: {
+      groupPhoto: '/tournaments/MSOC/records/group.jpg',
+      topThreePhoto: [
+        '/tournaments/MSOC/records/top1.jpg',
+        '/tournaments/MSOC/records/top2.jpg',
+        '/tournaments/MSOC/records/top3.jpg',
+      ]
+    }
+  }
 ];
 
 export const staffMembers: Staff[] = [
@@ -138,20 +143,13 @@ export const staffMembers: Staff[] = [
   },
   {
     id: "15",
-    name: "Hyu",
-    role: "Videographer",
-    avatarUrl: "/Staff/Avatar/hyu.png",
-    bannerUrl: "/Staff/Banner/hyu.png"
-  },
-  {
-    id: "16",
     name: "Kino",
     role: "Staff",
     avatarUrl: "/Staff/Avatar/kino.png",
     bannerUrl: "/Staff/Banner/kino.jpg"
   },
   {
-    id: "17",
+    id: "16",
     name: "Nguwuyn",
     role: "Poller",
     avatarUrl: "/Staff/Avatar/nguwuyn.png",

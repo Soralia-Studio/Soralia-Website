@@ -1,13 +1,17 @@
-'use client';
-
 import React from 'react';
 import Image from 'next/image';
-import { tournaments } from '../../data/data';
+import { tournaments } from '@/data/data';
 import { usePageContext } from '@/context/PageContext';
 import Masonry from 'react-masonry-css';
+import galleryImagesData from '@/data/galleryImages.json';
+import { AnimatePresence, motion } from 'motion/react';
+import { div } from 'motion/react-client';
 
 export default function TournamentDetailPage() {
     const { selectedTournamentId } = usePageContext();
+
+    const [selectedIndex, setSelectedIndex] = React.useState<number | null>(null);
+    const [podiumIndex, setPodiumIndex] = React.useState<number>(0);
 
     const masonryBreakpoints = {
         default: 4,
@@ -20,6 +24,31 @@ export default function TournamentDetailPage() {
 
     if (!tournament) {
         return <div>Tournament not found</div>;
+    }
+
+    const galleryImages = galleryImagesData as Record<string, string[]>;
+    const podiumImages = tournament.record.topThreePhoto;
+
+    const prev = () => {
+        if (selectedIndex === null) return;
+        setSelectedIndex((selectedIndex - 1 + galleryImages[tournament.title].length) % galleryImages[tournament.title].length);
+    }
+
+    const next = () => {
+        if (selectedIndex === null) return;
+        setSelectedIndex((selectedIndex + 1) % galleryImages[tournament.title].length);
+    }
+
+    const close = () => {
+        setSelectedIndex(null);
+    }
+
+    const podiumPrev = () => {
+        setPodiumIndex((podiumIndex - 1 + podiumImages.length) % podiumImages.length);
+    }
+
+    const podiumNext = () => {
+        setPodiumIndex((podiumIndex + 1) % podiumImages.length);
     }
 
     return (
@@ -123,26 +152,130 @@ export default function TournamentDetailPage() {
                 GALLERY
             </h2>
 
+            {/* Group shot */}
+            <div style={{
+                marginBottom: '1rem',
+                justifyContent: 'center',
+                display: 'flex',
+                alignItems: 'center',
+            }} >
+                <Image
+                    src={tournament.record.groupPhoto}
+                    alt="Group Photo"
+                    width={3000}
+                    height={2000}
+                    className="rounded-lg border border-white/20 object-cover"
+                ></Image>
+            </div>
+
+            <h3 style={{
+                fontSize: '2rem',
+                fontWeight: 600,
+                marginBottom: '1rem',
+                textAlign: 'center'
+            }}>
+                PODIUM
+            </h3>
+
+            <div style={{
+                marginBottom: '1rem',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '2rem',
+                position: 'relative',
+            }}>
+
+                <button
+                    onClick={podiumPrev}
+                    className="text-white text-4xl opacity-70 hover:opacity-100 select-none"
+                >
+                    &#10094;
+                </button>
+
+                <Image
+                    src={podiumImages[podiumIndex]}
+                    alt={`Podium Position ${podiumIndex + 1}`}
+                    width={600}
+                    height={400}
+                    className="rounded-lg border border-white/20 object-contain aspect-auto"
+                ></Image>
+
+                <button
+                    onClick={podiumNext}
+                    className="text-white text-4xl opacity-70 hover:opacity-100 select-none"
+                >
+                    &#10095;
+                </button>
+            </div>
+
             <Masonry
                 breakpointCols={masonryBreakpoints}
                 className="flex gap-2"
                 columnClassName=""
             >
-                {tournament.galleryImages.map((imageUrl, index) => (
+                {galleryImages[tournament.title]?.map((imageUrl, index) => (
                     <div
                         key={index}
                     >
-                        <img src={imageUrl} alt={`Gallery ${index + 1}`} 
+                        <img src={imageUrl} alt={`Gallery ${index + 1}`} onClick={() => setSelectedIndex(index)} 
                             style={{
                                 width: '100%',
                                 marginBottom: '15px',
                                 borderRadius: '8px',
+                                aspectRatio: '4 / 3',
+                                objectFit: 'cover',
                                 border: '1px solid rgba(255, 255, 255, 0.2)',
                             }}
                         />
                     </div>
                 ))}
             </Masonry>
+
+            <AnimatePresence>
+            {selectedIndex !== null && (
+                <motion.div
+                    className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center"
+                    onClick={close}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                >
+
+                <button
+                    onClick={e => {
+                        e.stopPropagation();
+                        prev();
+                    }}
+
+                    className='absolute left-4 text-white text-4xl opacity-70 hover:opacity-100 select-none'
+                >
+                    &#10094;
+                </button>
+
+                <motion.img src={galleryImages[tournament.title][selectedIndex]}  
+                    className='max-h-[90vh] max-v-[90vw] object-contain rounded-lg'
+                    onClick={e => e.stopPropagation()}
+                    initial={{ scale: 1, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 1, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
+                />
+
+                <button
+                    onClick={e => {
+                        e.stopPropagation();
+                        next();
+                    }}
+
+                    className='absolute right-5 text-white text-4xl opacity-70 hover:opacity-100 select-none'
+                >
+                    &#10095;
+                </button>
+            </motion.div>
+            )}
+        </AnimatePresence>
         </main>
     );
 }
