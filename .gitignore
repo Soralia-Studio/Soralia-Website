@@ -40,4 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+<<<<<<< HEAD
 * text=auto eol=lf
+=======
+# css
+/src/styles/xaxalele.css
+>>>>>>> Testing-mainpage

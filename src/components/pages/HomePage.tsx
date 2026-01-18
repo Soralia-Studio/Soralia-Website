@@ -1,18 +1,16 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 
+/**
+ * HomePage Component
+ * 
+ * Main landing page with logo, title, and content sections.
+ * Logo is always visible - splash overlay handles the reveal animation.
+ */
 export default function HomePage() {
-    const [logoVisible, setLogoVisible] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        // Trigger fade in animation after component mounts
-        setTimeout(() => {
-            setLogoVisible(true);
-        }, 100);
-    }, []);
 
     const scrollToContent = () => {
         if (contentRef.current) {
@@ -39,11 +37,8 @@ export default function HomePage() {
                 minHeight: '100vh',
                 paddingBottom: '20px',
             }}>
-                {/* Logo with fade in from bottom animation */}
+                {/* Logo - always visible (splash handles reveal) */}
                 <div style={{
-                    opacity: logoVisible ? 1 : 0,
-                    transform: logoVisible ? 'translateY(0)' : 'translateY(50px)',
-                    transition: 'opacity 1.2s ease-out, transform 1.2s ease-out',
                     marginBottom: '30px',
                 }}>
                     <Image
@@ -118,6 +113,11 @@ export default function HomePage() {
                     fontSize: '0.95rem',
                     lineHeight: '1.8',
                     textAlign: 'justify',
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    backdropFilter: 'blur(10px)',
+                    padding: '30px',
+                    borderRadius: '16px',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                 }}>
                     <p style={{ marginBottom: '12px' }}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget dolor quam. Suspendisse at armet euismod quam. Donec venenatis eulismod fermentum. Duis tincidunt consequat leo, nec dignissim tortor vehicula sed. Sed sed orttqu nequet. Aenean nibh et turpis faucibus eros, viverra tincidunt purus semper a. Vivamus scelerisque ligula neque at dolor. Duis posuere vel magna ut rutrum. Proin dapibus dui vitae nibh malesuada, ac illiqula dolor molestie. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc ut mattis mi. Duis ac dui sed orttqu pulvinar aliquot ex vel eros. Pellentesque felis ligula, placerat et elit at ornare euismod quam.

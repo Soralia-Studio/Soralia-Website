@@ -28,7 +28,11 @@ export default function TournamentsPage() {
         setXaxaleleClickCount(newClickCount);
 
         if (newClickCount >= 7) {
+<<<<<<< HEAD
             window.location.href = 'https://xaxalele.vercel.app/';
+=======
+            window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+>>>>>>> Testing-mainpage
         }
     }
 

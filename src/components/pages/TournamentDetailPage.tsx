@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { tournaments } from '@/data/data';
+import { tournaments } from '../../data/data';
 import { usePageContext } from '@/context/PageContext';
 import Masonry from 'react-masonry-css';
 import galleryImagesData from '@/data/galleryImages.json';
@@ -102,17 +102,11 @@ export default function TournamentDetailPage() {
                 marginBottom: '40px',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
             }}>
-                <h2 style={{
-                    fontSize: '1.2rem',
-                    fontWeight: 600,
-                    marginBottom: '15px',
-                }}>
-                    (Short summary + top 3)
-                </h2>
                 <p style={{
                     fontSize: '1rem',
                     lineHeight: '1.7',
                     color: 'rgba(255, 255, 255, 0.9)',
+                    whiteSpace: 'pre-line',
                 }}>
                     {tournament.fullDescription}
                 </p>

@@ -23,7 +23,7 @@ export type Staff = {
 export const tournaments: Tournament[] = [
   {
     id: "1",
-    title: "MSOC",
+    title: "MSOC Tournament",
     shortDescription:
       "MSOC (MAIMAI STUDENT OPEN CUP) – The Student Showdown! Hosted at Dream Games Tan Phu, students represent their schools in a unique 1v1 (Team up 4) stamina format to claim the championship",
     fullDescription:
@@ -159,4 +159,4 @@ export const staffMembers: Staff[] = [
 
 export const xaxalele = {
   boxGlitch: "/Box_glitch_1.png",
-}
+};
