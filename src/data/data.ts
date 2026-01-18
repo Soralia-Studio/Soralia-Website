@@ -169,6 +169,6 @@ export const motd: string[] = [
   "This week is very special",
   "Cha m map",
   "Me may beo",
-  "Click me!",
+  "Tokai, Hey yo",
   "WHAT THE FUCK IS THE KILOMETERS \🦅"
 ]

@@ -3,7 +3,7 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { cafe } from '@/data/data';
-import { motd } from '@/data/data';
+import MessageOfTheDay from '@/script/messageOfTheDay';
 
 /**
  * HomePage Component
@@ -17,14 +17,22 @@ export default function HomePage() {
     const vineBoomRef = useRef<HTMLAudioElement>(null);
     const tsunagiteRef = useRef<HTMLAudioElement>(null);
 
-    const playVineBoom = () => {
+    const [message, setMessage] = React.useState<string>('');
+
+    React.useEffect(() => {
+        setMessage(MessageOfTheDay.getMessage());
+    }, []);
+
+    const playVineBoom = (e: React.MouseEvent) => {
         if(vineBoomRef.current) {
+            e.stopPropagation();
             vineBoomRef.current.play();
         }
     }
 
-    const playTsunagite = () => {
+    const playTsunagite = (e: React.MouseEvent) => {
         if(tsunagiteRef.current) {
+            e.stopPropagation();
             tsunagiteRef.current.play();
         }
     }
@@ -34,16 +42,6 @@ export default function HomePage() {
             contentRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     };
-
-    // Random message per each refresh
-    const messageOfTheDay = () => {
-        const messages = motd;
-        const randomIndex = Math.floor(Math.random() * messages.length);
-        
-        return messages[randomIndex];
-    }
-
-    const message: string = messageOfTheDay();
 
     return (
         <main style={{
@@ -87,13 +85,7 @@ export default function HomePage() {
                     marginBottom: '40px',
                     marginTop: '10px',
                 }}>
-                    <p
-                        onClick={message.indexOf('Click') > -1 ? playTsunagite : undefined}
-                        className={message.indexOf('Click') > -1 ? 'clickable-text' : ''}
-                    >
-                        <audio ref={tsunagiteRef} src="/audio/tsunagite.mp3"></audio>
-                        {message}
-                    </p>
+                    {message}
                 </h1>
 
                 {/* Down arrow icon with animation and click handler */}
