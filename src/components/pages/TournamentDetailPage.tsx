@@ -31,12 +31,12 @@ export default function TournamentDetailPage() {
 
     const prev = () => {
         if (selectedIndex === null) return;
-        setSelectedIndex((selectedIndex - 1 + galleryImages[tournament.name].length) % galleryImages[tournament.name].length);
+        setSelectedIndex((selectedIndex - 1 + galleryImages[tournament.id].length) % galleryImages[tournament.id].length);
     }
 
     const next = () => {
         if (selectedIndex === null) return;
-        setSelectedIndex((selectedIndex + 1) % galleryImages[tournament.name].length);
+        setSelectedIndex((selectedIndex + 1) % galleryImages[tournament.id].length);
     }
 
     const close = () => {
@@ -208,7 +208,7 @@ export default function TournamentDetailPage() {
                 className="flex gap-2"
                 columnClassName=""
             >
-                {galleryImages[tournament.name]?.map((imageUrl, index) => (
+                {galleryImages[tournament.id]?.map((imageUrl, index) => (
                     <div
                         key={index}
                     >
@@ -248,7 +248,7 @@ export default function TournamentDetailPage() {
                     &#10094;
                 </button>
 
-                <motion.img src={galleryImages[tournament.name][selectedIndex]}  
+                <motion.img src={galleryImages[tournament.id][selectedIndex]}  
                     className='max-h-[90vh] max-v-[90vw] object-contain rounded-lg'
                     onClick={e => e.stopPropagation()}
                     initial={{ scale: 1, opacity: 0 }}
