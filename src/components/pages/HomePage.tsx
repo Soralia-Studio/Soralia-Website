@@ -2,6 +2,8 @@
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
+import { cafe } from '@/data/data';
+import { motd } from '@/data/data';
 
 /**
  * HomePage Component
@@ -11,12 +13,37 @@ import Image from 'next/image';
  */
 export default function HomePage() {
     const contentRef = useRef<HTMLDivElement>(null);
+    
+    const vineBoomRef = useRef<HTMLAudioElement>(null);
+    const tsunagiteRef = useRef<HTMLAudioElement>(null);
+
+    const playVineBoom = () => {
+        if(vineBoomRef.current) {
+            vineBoomRef.current.play();
+        }
+    }
+
+    const playTsunagite = () => {
+        if(tsunagiteRef.current) {
+            tsunagiteRef.current.play();
+        }
+    }
 
     const scrollToContent = () => {
         if (contentRef.current) {
             contentRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
+    // Random message per each refresh
+    const messageOfTheDay = () => {
+        const messages = motd;
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        
+        return messages[randomIndex];
+    }
+
+    const message: string = messageOfTheDay();
 
     return (
         <main style={{
@@ -60,7 +87,13 @@ export default function HomePage() {
                     marginBottom: '40px',
                     marginTop: '10px',
                 }}>
-                    Random Text Here
+                    <p
+                        onClick={message.indexOf('Click') > -1 ? playTsunagite : undefined}
+                        className={message.indexOf('Click') > -1 ? 'clickable-text' : ''}
+                    >
+                        <audio ref={tsunagiteRef} src="/audio/tsunagite.mp3"></audio>
+                        {message}
+                    </p>
                 </h1>
 
                 {/* Down arrow icon with animation and click handler */}
@@ -119,15 +152,15 @@ export default function HomePage() {
                     borderRadius: '16px',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                 }}>
-                    <p style={{ marginBottom: '12px' }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget dolor quam. Suspendisse at armet euismod quam. Donec venenatis eulismod fermentum. Duis tincidunt consequat leo, nec dignissim tortor vehicula sed. Sed sed orttqu nequet. Aenean nibh et turpis faucibus eros, viverra tincidunt purus semper a. Vivamus scelerisque ligula neque at dolor. Duis posuere vel magna ut rutrum. Proin dapibus dui vitae nibh malesuada, ac illiqula dolor molestie. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc ut mattis mi. Duis ac dui sed orttqu pulvinar aliquot ex vel eros. Pellentesque felis ligula, placerat et elit at ornare euismod quam.
-                    </p>
-                    <p style={{ marginBottom: '12px' }}>
-                        Vulputate eleifend lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget dolor quam. Suspendisse at armet euismod quam. Donec eget magna sit elit amet, vel dignissim tortor vehicula sed. Sed sed orttqu nequet. Aenean nibh et turpis faucibus mattis mi. Duis ac dui sed orttqu pulvinar aliquot ex vel eros. Pellentesque felis ligula, placerat et elit at ornare, consectetur nostra, per inceptos himenaeos. Donec eget turpis faucibus mauris auctor interdum nec at dolor. Duis posuere vel magna ut rutrum. Proin dapibus dui vitae nibh malesuada, ac illiqula dolor molestie. Nunc ut mattis mi. Duis ac dui sed orttqu pulvinar aliquot ex vel eros. Pellentesque felis ligula, placerat et elit at ornare fermentum. Duis tincidunt consequat leo.
-                    </p>
-                    <p>
-                        Donec eget magna turpis faucibus mauris auctor interdum nec at dolor. Duis posuere vel magna ut rutrum. Proin dapibus dui vitae nibh ut mattis mi. Duis ac dui sed orttqu pulvinar aliquot ex vel eros. Pellentesque felis ligula, placerat et elit sit amet, consequat mauris vel eros. Nunc venenatis consequat leo, nec dignissim tortor vehicula sed. Sed sed orttqu nequet. Aenean nibh et turpis faucibus vel ornare orttqu nequet. Aenean turpis faucibus mauris, consectetur adipiscing elit. Proin eget dolor quam. Suspendisse sit amet euismod quam. Donec venenatis euismod fermentum. Duis tincidunt consequat leo, nec dignissim.
-                    </p>
+                    <Image
+                        src={cafe.image}
+                        alt='manhattan cafe'
+                        width={600}
+                        height={600}
+                        loading= 'eager'
+                        onClick={playVineBoom}
+                    ></Image>
+                    <audio ref={vineBoomRef} src="/audio/vine-boom.mp3" />
                 </div>
             </div>
         </main>
