@@ -2,6 +2,7 @@ import React from 'react';
 import TournamentCard from '../../components/TournamentCard';
 import { tournaments } from '../../data/data';
 import { Poppins } from 'next/font/google';
+import Link from 'next/link';
 
 const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -48,13 +49,13 @@ export default function TournamentsPage() {
           padding: 0,
         }}>
           <li style={{ margin: '0 30px', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 'bold', position: 'relative', padding: '5px 0' }}>
-            <a href="/" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>HOME</a>
+            <Link href="/" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>HOME</Link>
           </li>
           <li style={{ margin: '0 30px', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 'bold', position: 'relative', padding: '5px 0', borderBottom: '2px solid white' }}>
-            <a href="/tournaments" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>TOURNAMENTS</a>
+            <Link href="/tournaments" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>TOURNAMENTS</Link>
           </li>
           <li style={{ margin: '0 30px', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 'bold', position: 'relative', padding: '5px 0' }}>
-            <a href="/staff" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>STAFF</a>
+            <Link href="/staff" style={{ color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', paddingBottom: '8px' }}>STAFF</Link>
           </li>
         </ul>
       </nav>

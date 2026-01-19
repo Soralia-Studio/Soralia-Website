@@ -23,6 +23,8 @@ const StaffCard: React.FC<StaffCardProps> = ({ name, role, avatarUrl, bannerUrl 
           <Image
             src={avatarUrl}
             alt={`${name} Avatar`}
+            decoding='async'
+            loading='lazy'
             fill
             className='object-cover'
           />
@@ -36,6 +38,8 @@ const StaffCard: React.FC<StaffCardProps> = ({ name, role, avatarUrl, bannerUrl 
           <Image
             src={bannerUrl}
             alt={`${name} Banner`}
+            decoding='async'
+            loading='lazy'
             fill
             className='object-cover'
           />

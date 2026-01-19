@@ -15,7 +15,6 @@ export default function HomePage() {
     const contentRef = useRef<HTMLDivElement>(null);
 
     const vineBoomRef = useRef<HTMLAudioElement>(null);
-    const tsunagiteRef = useRef<HTMLAudioElement>(null);
 
     const [message, setMessage] = React.useState<string>('');
 
@@ -27,13 +26,6 @@ export default function HomePage() {
         if (vineBoomRef.current) {
             e.stopPropagation();
             vineBoomRef.current.play();
-        }
-    }
-
-    const playTsunagite = (e: React.MouseEvent) => {
-        if (tsunagiteRef.current) {
-            e.stopPropagation();
-            tsunagiteRef.current.play();
         }
     }
 
@@ -172,7 +164,6 @@ export default function HomePage() {
                             }}
                         />
                     </div>
-                    <audio ref={vineBoomRef} src="/audio/vine-boom.mp3" />
                 </div>
             </div>
         </main>
