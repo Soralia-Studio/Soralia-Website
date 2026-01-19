@@ -197,9 +197,9 @@ export default function TournamentDetailPage() {
                     alt={`Podium Position ${podiumIndex + 1}`}
                     decoding='async'
                     loading='lazy'
-                    width={600}
-                    height={400}
-                    className="rounded-lg border border-white/20 object-contain aspect-auto"
+                    width={1200}
+                    height={800}
+                    className="rounded-lg border border-white/20 object-cover aspect-[3/2]"
                 ></Image>
 
                 <button
