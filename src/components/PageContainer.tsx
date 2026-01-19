@@ -14,7 +14,9 @@ import TournamentDetailPage from './pages/TournamentDetailPage';
  * Handles page transitions with opacity animation.
  */
 export default function PageContainer() {
-    const { currentPage, isTransitioning } = usePageContext();
+    const { currentPage, isTransitioning, selectedTournamentId } = usePageContext();
+
+    console.log('PageContainer - currentPage:', currentPage, 'selectedTournamentId:', selectedTournamentId);
 
     const renderPage = () => {
         switch (currentPage) {
@@ -25,7 +27,7 @@ export default function PageContainer() {
             case 'staff':
                 return <StaffPage />;
             case 'tournament-detail':
-                return <TournamentDetailPage />;
+                return <TournamentDetailPage tournamentId={selectedTournamentId || ''} />;
             default:
                 return <HomePage />;
         }

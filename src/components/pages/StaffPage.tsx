@@ -3,8 +3,11 @@
 import React from 'react';
 import StaffCard from '@/components/StaffCard';
 import { staffMembers } from '../../data/data';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function StaffPage() {
+    const { language } = useLanguage();
+    
     return (
         <main style={{
             margin: 'clamp(40px, 10vw, 80px) 0 clamp(50px, 10vw, 100px) 0',
@@ -26,7 +29,7 @@ export default function StaffPage() {
                 letterSpacing: '1px',
                 textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
                 padding: '0 20px',
-            }}>Our Staff</h1>
+            }}>{language === 'vi' ? 'Dàn nhân sự' : 'Our Staff'}</h1>
 
             <div style={{
                 display: 'grid',

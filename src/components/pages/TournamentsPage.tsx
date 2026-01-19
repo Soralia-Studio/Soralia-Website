@@ -3,24 +3,13 @@
 import React from 'react';
 import TournamentCard from '@/components/TournamentCard';
 import { tournaments, xaxalele } from '../../data/data';
-import { usePageContext } from '@/context/PageContext';
+import { useLanguage } from '@/context/LanguageContext';
 import { useState } from 'react';
 import Image from 'next/image';
 
 export default function TournamentsPage() {
-    const { setCurrentPage, setSelectedTournamentId, setIsTransitioning } = usePageContext();
+    const { language } = useLanguage();
     const [xaxaleleClickCount, setXaxaleleClickCount] = useState(0);
-
-    const handleTournamentClick = (id: string) => {
-        setIsTransitioning(true);
-        setTimeout(() => {
-            setSelectedTournamentId(id);
-            setCurrentPage('tournament-detail');
-            setTimeout(() => {
-                setIsTransitioning(false);
-            }, 50);
-        }, 300);
-    };
 
     // If user clicks the xaxalele box 7 times, direct them to a secret page (different url)
     const handleBoxXaxaleleClick = () => {
@@ -140,17 +129,13 @@ export default function TournamentsPage() {
                     gap: 'clamp(15px, 3vw, 25px)',
                 }}>
                     {tournaments.map((tournament) => (
-                        <div
+                        <TournamentCard
                             key={tournament.id}
-                            onClick={() => handleTournamentClick(tournament.id)}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <TournamentCard
-                                title={tournament.title}
-                                description={tournament.shortDescription}
-                                imageUrl={tournament.mainImage}
-                            />
-                        </div>
+                            id={tournament.id}
+                            title={tournament.title}
+                            description={language === 'vi' ? tournament.shortDescriptionVi : tournament.shortDescription}
+                            imageUrl={tournament.mainImage}
+                        />
                     ))}
 
                     {/* Xaxalele thingy*/}

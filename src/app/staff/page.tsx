@@ -1,5 +1,5 @@
 import MainApp from '@/components/MainApp';
 
-export default function Home() {
+export default function Staff() {
   return <MainApp />;
 }

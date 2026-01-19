@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { PageProvider } from '@/context/PageContext';
+import { LanguageProvider } from '@/context/LanguageContext';
 import NavigationBar from '@/components/NavigationBar';
 import PageContainer from '@/components/PageContainer';
+import SocialMediaButtons from '@/components/SocialMediaButtons';
 import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
@@ -37,47 +39,52 @@ export default function MainApp() {
     }, []);
 
     return (
-        <PageProvider>
-            {/* Main content - ALWAYS rendered underneath */}
-            <div
-                className={poppins.className}
-                style={{
-                    minHeight: '100vh',
-                    width: '100%',
-                    maxWidth: '100vw',
-                    margin: 0,
-                    padding: 0,
-                    overflowX: 'hidden',
-                    backgroundImage: 'url("/placeholders/Background.png")',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundAttachment: 'scroll', // Changed from fixed for better mobile performance
-                    color: 'white',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    zIndex: 1,
-                }}
-            >
-                {/* Navigation bar - fade in after logo */}
-                <NavigationBar fadeIn={showNavbar} />
+        <LanguageProvider>
+            <PageProvider>
+                {/* Main content - ALWAYS rendered underneath */}
+                <div
+                    className={poppins.className}
+                    style={{
+                        minHeight: '100vh',
+                        width: '100%',
+                        maxWidth: '100vw',
+                        margin: 0,
+                        padding: 0,
+                        overflowX: 'hidden',
+                        backgroundImage: 'url("/placeholders/Background.png")',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundAttachment: 'scroll', // Changed from fixed for better mobile performance
+                        color: 'white',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        zIndex: 1,
+                    }}
+                >
+                    {/* Navigation bar - fade in after logo */}
+                    <NavigationBar />
 
-                {/* Page content - logo fades in first */}
-                <div style={{
-                    opacity: showLogo ? 1 : 0,
-                    transition: 'opacity 1s ease-out',
-                    width: '100%',
-                    height: '100%',
-                }}>
-                    <PageContainer />
+                    {/* Page content - logo fades in first */}
+                    <div style={{
+                        opacity: showLogo ? 1 : 0,
+                        transition: 'opacity 1s ease-out',
+                        width: '100%',
+                        height: '100%',
+                    }}>
+                        <PageContainer />
+                    </div>
+
+                    {/* Social Media & Language Bar - Fixed at bottom */}
+                    <SocialMediaButtons variant="bottom-bar" />
                 </div>
-            </div>
-        </PageProvider>
+            </PageProvider>
+        </LanguageProvider>
     );
 }

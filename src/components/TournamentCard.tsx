@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import Link from "next/link";
+import { usePageContext } from '@/context/PageContext';
 
 interface TournamentCardProps {
   id?: string;
@@ -11,24 +11,45 @@ interface TournamentCardProps {
 }
 
 export default function TournamentCard({ id, title, description, imageUrl }: TournamentCardProps) {
+  const { setSelectedTournamentId, navigateToPage } = usePageContext();
+
+  console.log('TournamentCard render - id:', id);
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('TournamentCard clicked:', id);
+    if (id) {
+      setSelectedTournamentId(id);
+      console.log('Calling navigateToPage with tournament-detail');
+      navigateToPage('tournament-detail');
+    }
+  };
+
   const CardContent = (
-    <article style={{
-      background: 'rgba(0, 0, 0, 0.8)',
-      backdropFilter: 'blur(10px)',
-      border: '2px solid rgba(255, 255, 255, 0.3)',
-      borderRadius: '20px',
-      overflow: 'hidden',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-    }}
+    <article 
+      onClick={id ? handleClick : undefined}
+      style={{
+        background: 'rgba(0, 0, 0, 0.8)',
+        backdropFilter: 'blur(10px)',
+        border: '2px solid rgba(255, 255, 255, 0.3)',
+        borderRadius: '20px',
+        overflow: 'hidden',
+        transition: 'all 0.3s ease',
+        cursor: id ? 'pointer' : 'default',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+      }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
-        e.currentTarget.style.transform = 'translateY(-2px)';
+        if (id) {
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+          e.currentTarget.style.transform = 'translateY(-2px)';
+        }
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-        e.currentTarget.style.transform = 'translateY(0)';
+        if (id) {
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+          e.currentTarget.style.transform = 'translateY(0)';
+        }
       }}
     >
       <div style={{
@@ -101,14 +122,6 @@ export default function TournamentCard({ id, title, description, imageUrl }: Tou
       </div>
     </article>
   );
-
-  if (id) {
-    return (
-      <Link href={`/tournaments/${id}`} style={{ display: 'block', width: '100%', maxWidth: '950px', margin: '0 auto', textDecoration: 'none' }}>
-        {CardContent}
-      </Link>
-    );
-  }
 
   return <div style={{ display: 'block', width: '100%', maxWidth: '950px', margin: '0 auto' }}>{CardContent}</div>;
 }

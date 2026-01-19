@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { cafe } from '@/data/data';
+import { useLanguage } from '@/context/LanguageContext';
 import MessageOfTheDay from '@/script/messageOfTheDay';
 
 /**
@@ -13,6 +14,7 @@ import MessageOfTheDay from '@/script/messageOfTheDay';
  */
 export default function HomePage() {
     const contentRef = useRef<HTMLDivElement>(null);
+    const { language } = useLanguage();
 
     const vineBoomRef = useRef<HTMLAudioElement>(null);
     const tsunagiteRef = useRef<HTMLAudioElement>(null);
@@ -22,6 +24,11 @@ export default function HomePage() {
     React.useEffect(() => {
         setMessage(MessageOfTheDay.getMessage());
     }, []);
+
+    const aboutText = {
+        en: "Soralia Studio, formerly known as Area 57 Studio, was founded by Hidr0 as a creative collective shaped by a deep commitment to rhythm games, event production, and community-building. What began as an experimental studio under the Area 57 banner gradually matured through hands-on experience, competitive events, and close collaboration with local players.\n\nOver time, the leadership of Area 57 expressed a strategic desire for the studio to separate and operate as an independent unit—leaner, more focused, and free to pursue its own creative direction. Aligning with that vision, Hidr0 made the pivotal decision to rebrand the studio as Soralia Studio, marking a clean break and a bold recalibration of purpose. From that moment, Soralia became a standalone operation with its own identity, values, and execution model.\n\nThe name Soralia was carefully chosen to reflect both atmosphere and ambition. Etymologically inspired by concepts of the sky, light, and elevation, Soralia conveys a sense of calm above turbulence—a place where creativity can exist beyond noise and constraint. It symbolizes aspiration without arrogance, softness paired with structure, and growth protected by intention.\n\nThis philosophy is carried through the studio’s visual identity. The umbrella logo represents shelter, direction, and collective strength. In an environment often shaped by pressure, competition, and uncertainty, the umbrella stands as a promise: Soralia Studio exists to protect ideas, people, and passion. Beneath it, creators and players alike can focus, perform, and move forward together. The surrounding night sky, clouds, moon, and flowing wind reinforce this metaphor—suggesting movement through challenge with quiet confidence and composure.\n\nToday, Soralia Studio’s strategic focus is firmly centered on ChuniMai tournaments. The studio aims to build a sustainable and recognizable competitive ecosystem, with a long-term vision of hosting more frequent and higher-quality ChuniMai events in District 7. This area is seen not just as a location, but as a growth hub—accessible, community-driven, and full of potential to become a rhythm-game landmark.\n\nSoralia Studio is no longer just an evolution of Area 57—it is a deliberate repositioning. Independent in structure, focused in mission, and human at its core, the studio continues to move forward with one clear goal: to create a safe, professional, and inspiring space where the ChuniMai community can gather, compete, and thrive.",
+        vi: "Soralia Studio, trước đây mang tên Area 57 Studio, được Hidr0 thành lập như một tập thể sáng tạo với niềm đam mê rhythm game, tổ chức sự kiện và xây dựng cộng đồng. Từ những ngày đầu thử nghiệm dưới cái tên Area 57, studio dần trưởng thành qua từng giải đấu, từng sự kiện, và sự gắn kết chặt chẽ với cộng đồng game thủ địa phương.\n\nTheo thời gian, ban lãnh đạo Area 57 đã bày tỏ mong muốn để studio tách ra hoạt động độc lập—gọn nhẹ hơn, tập trung hơn, và tự do theo đuổi định hướng sáng tạo riêng. Phù hợp với tầm nhìn đó, Hidr0 quyết định đổi tên thành Soralia Studio, đánh dấu sự tách biệt hoàn toàn và tái định vị mục tiêu. Từ đó, Soralia trở thành một đơn vị độc lập với bản sắc, giá trị và phương thức hoạt động riêng biệt.\n\nCái tên Soralia được chọn lựa kỹ càng để phản ánh cả không khí lẫn khát vọng. Lấy cảm hứng từ khái niệm bầu trời, ánh sáng và sự vươn lên, Soralia mang đến cảm giác bình yên giữa hỗn loạn—nơi sáng tạo có thể tồn tại vượt qua ồn ào và ràng buộc. Đó là biểu tượng cho khát vọng không kiêu ngạo, sự mềm mại kết hợp cấu trúc, và sự phát triển được bảo vệ bởi định hướng rõ ràng.\n\nTriết lý này được thể hiện qua nhận diện thương hiệu. Logo chiếc dù tượng trưng cho sự che chở, định hướng và sức mạnh tập thể. Trong môi trường đầy áp lực, cạnh tranh và bất ổn, chiếc dù là lời hứa: Soralia Studio tồn tại để bảo vệ ý tưởng, con người và đam mê. Dưới đó, cả người sáng tạo lẫn game thủ đều có thể tập trung, thể hiện và tiến bước cùng nhau. Bầu trời đêm, mây, mặt trăng và gió chảy xung quanh củng cố ẩn dụ này—gợi lên hình ảnh vượt qua thử thách với sự tự tin và bình tĩnh.\n\nHiện tại, Soralia Studio tập trung chiến lược vào các giải đấu ChuniMai. Mục tiêu là xây dựng hệ sinh thái thi đấu bền vững và uy tín, với tầm nhìn dài hạn tổ chức các giải ChuniMai thường xuyên và chất lượng cao hơn tại Quận 7. Khu vực này không chỉ là địa điểm, mà còn là trung tâm phát triển—dễ tiếp cận, hướng đến cộng đồng, đầy tiềm năng trở thành địa danh rhythm game.\n\nSoralia Studio không còn là sự tiến hóa của Area 57—đây là một sự tái định vị có chủ đích. Độc lập về cấu trúc, rõ ràng về sứ mệnh, và con người là cốt lõi, studio tiếp tục tiến về phía trước với một mục tiêu: tạo ra không gian an toàn, chuyên nghiệp và đầy cảm hứng, nơi cộng đồng ChuniMai có thể tụ họp, thi đấu và phát triển."
+    };
 
     const playVineBoom = (e: React.MouseEvent) => {
         if (vineBoomRef.current) {
@@ -129,52 +136,54 @@ export default function HomePage() {
                 }
             `}</style>
 
-            {/* Second section - Lorem ipsum text */}
+            {/* Second section - About Soralia Studio */}
             <div
                 ref={contentRef}
                 style={{
                     minHeight: '100vh',
                     display: 'flex',
+                    flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
                     padding: 'clamp(30px, 8vw, 60px) clamp(20px, 5vw, 40px)',
                 }}
             >
+                <h2 style={{
+                    fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+                    fontWeight: 700,
+                    marginBottom: '40px',
+                    textAlign: 'center',
+                    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+                }}>
+                    {language === 'vi' ? 'Về Soralia Studio' : 'About Soralia Studio'}
+                </h2>
+
                 <div style={{
                     maxWidth: '900px',
                     width: '100%',
-                    color: 'rgba(255, 255, 255, 0.85)',
-                    fontSize: 'clamp(0.85rem, 2vw, 0.95rem)',
+                    color: 'rgba(255, 255, 255, 0.9)',
+                    fontSize: 'clamp(0.85rem, 2vw, 1rem)',
                     lineHeight: '1.8',
                     textAlign: 'justify',
                     backgroundColor: 'rgba(0, 0, 0, 0.5)',
                     backdropFilter: 'blur(10px)',
-                    padding: 'clamp(20px, 4vw, 30px)',
+                    padding: 'clamp(30px, 4vw, 40px)',
                     borderRadius: '16px',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                    fontFamily: language === 'vi' ? 'Inter, sans-serif' : 'var(--font-poppins), sans-serif',
                 }}>
-                    <div style={{
-                        position: 'relative',
-                        width: '100%',
-                        maxWidth: '600px',
-                        aspectRatio: '1/1',
-                        margin: '0 auto',
+                    <p style={{
+                        whiteSpace: 'pre-line',
+                        margin: 0,
                     }}>
-                        <Image
-                            src={cafe.image}
-                            alt='manhattan cafe'
-                            fill
-                            loading='eager'
-                            onClick={playVineBoom}
-                            style={{
-                                objectFit: 'contain',
-                                cursor: 'pointer',
-                            }}
-                        />
-                    </div>
-                    <audio ref={vineBoomRef} src="/audio/vine-boom.mp3" />
+                        {aboutText[language]}
+                    </p>
                 </div>
             </div>
+
+            <audio ref={vineBoomRef} src="/audio/vine-boom.mp3" />
+            <audio ref={tsunagiteRef} src="/Song/ONGEKI_tsunagite.mp3" />
         </main>
     );
 }

@@ -1,13 +1,19 @@
 import React from 'react';
 import Image from 'next/image';
 import { tournaments } from '../../data/data';
+import { useLanguage } from '@/context/LanguageContext';
 import { usePageContext } from '@/context/PageContext';
 import Masonry from 'react-masonry-css';
 import galleryImagesData from '@/data/galleryImages.json';
 import { AnimatePresence, motion } from 'framer-motion';
 
-export default function TournamentDetailPage() {
-    const { selectedTournamentId } = usePageContext();
+interface TournamentDetailPageProps {
+    tournamentId: string;
+}
+
+export default function TournamentDetailPage({ tournamentId }: TournamentDetailPageProps) {
+    const { language } = useLanguage();
+    const { navigateToPage } = usePageContext();
 
     const [selectedIndex, setSelectedIndex] = React.useState<number | null>(null);
     const [podiumIndex, setPodiumIndex] = React.useState<number>(0);
@@ -19,11 +25,25 @@ export default function TournamentDetailPage() {
         500: 1,
     }
 
-    const tournament = tournaments.find((t) => t.id === selectedTournamentId);
+    const tournament = tournaments.find((t) => t.id === tournamentId);
 
     if (!tournament) {
         return <div>Tournament not found</div>;
     }
+
+    // Helper function to render text with bold markdown
+    const renderDescription = (text: string) => {
+        const parts = text.split(/\*\*(.*?)\*\*/g);
+        return parts.map((part, index) => {
+            if (index % 2 === 1) {
+                return <strong key={index}>{part}</strong>;
+            }
+            return <span key={index}>{part}</span>;
+        });
+    };
+
+    // Get description based on language
+    const description = language === 'vi' ? tournament.fullDescriptionVi : tournament.fullDescription;
 
     const galleryImages = galleryImagesData as Record<string, string[]>;
     const podiumImages = tournament.record.topThreePhoto;
@@ -92,7 +112,6 @@ export default function TournamentDetailPage() {
                 {tournament.title}
             </h1>
 
-            {/* Tournament Description */}
             <div style={{
                 backgroundColor: 'rgba(0, 0, 0, 0.5)',
                 backdropFilter: 'blur(10px)',
@@ -106,9 +125,18 @@ export default function TournamentDetailPage() {
                     lineHeight: '1.7',
                     color: 'rgba(255, 255, 255, 0.9)',
                     whiteSpace: 'pre-line',
+                    fontFamily: language === 'vi' ? 'Inter, sans-serif' : 'var(--font-poppins), sans-serif',
                 }}>
-                    {tournament.fullDescription}
+                    {renderDescription(description)}
                 </p>
+
+                <style jsx>{`
+                    p strong {
+                        font-weight: 800;
+                        color: rgba(255, 255, 255, 1);
+                        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                    }
+                `}</style>
             </div>
 
             {/* Video Placeholder */}

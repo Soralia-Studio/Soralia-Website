@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
 import "@/styles/reset.css";
-import Nav from "@/components/Nav";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -32,13 +30,20 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${poppins.variable} antialiased min-h-screen m-0 p-0 bg-gradient-to-br from-[#0f3a8a] to-[#0a2540]`}
-        style={{ margin: 0, padding: 0, fontFamily: 'var(--font-poppins), sans-serif' }}
+        className={`${poppins.variable} antialiased`}
+        style={{ 
+          margin: 0, 
+          padding: 0, 
+          fontFamily: 'var(--font-poppins), sans-serif',
+          minHeight: '100vh',
+          backgroundImage: 'url("/placeholders/Background.png")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'scroll',
+        }}
       >
-        <Nav />
-        <main>
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );
