@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { translations } from '@/data/translations';
 
 /**
  * Supported Languages
@@ -48,7 +49,6 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     // Translation function (will be enhanced with translations data)
     const t = (key: string): string => {
         // Import translations dynamically
-        const translations = require('@/data/translations').translations;
         return translations[language]?.[key] || key;
     };
 
