@@ -157,6 +157,8 @@ export default function TournamentDetailPage() {
             }} >
                 <Image
                     src={tournament.record.groupPhoto}
+                    decoding='async'
+                    loading='lazy'
                     alt="Group Photo"
                     width={3000}
                     height={2000}
@@ -173,6 +175,7 @@ export default function TournamentDetailPage() {
                 PODIUM
             </h3>
 
+            {/* Podium Carousel */}
             <div style={{
                 marginBottom: '1rem',
                 display: 'flex',
@@ -192,9 +195,11 @@ export default function TournamentDetailPage() {
                 <Image
                     src={podiumImages[podiumIndex]}
                     alt={`Podium Position ${podiumIndex + 1}`}
-                    width={600}
-                    height={400}
-                    className="rounded-lg border border-white/20 object-contain aspect-auto"
+                    decoding='async'
+                    loading='lazy'
+                    width={1200}
+                    height={800}
+                    className="rounded-lg border border-white/20 object-cover aspect-[3/2]"
                 ></Image>
 
                 <button
@@ -261,7 +266,6 @@ export default function TournamentDetailPage() {
 
                         <motion.img src={zoomImages[tournament.id][selectedIndex]}
                             className='max-h-[90vh] max-w-[90vw] object-contain rounded-lg'
-                            loading='lazy'
                             decoding='async'
                             onClick={(e: React.MouseEvent) => e.stopPropagation()}
                             initial={{ scale: 1, opacity: 0 }}
