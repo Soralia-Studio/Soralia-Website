@@ -173,7 +173,7 @@ export default function TournamentDetailPage({ tournamentId }: TournamentDetailP
                 marginBottom: '30px',
                 textTransform: 'uppercase',
             }}>
-                GALLERY
+                GROUP PHOTO
             </h2>
 
             {/* Group shot */}
@@ -217,13 +217,15 @@ export default function TournamentDetailPage({ tournamentId }: TournamentDetailP
                     &#10094;
                 </button>
 
-                <Image
-                    src={podiumImages[podiumIndex]}
-                    alt={`Podium Position ${podiumIndex + 1}`}
-                    width={600}
-                    height={400}
-                    className="rounded-lg border border-white/20 object-contain aspect-auto"
-                ></Image>
+                <div className='max-w-3xl w-full'>
+                    <Image
+                        src={podiumImages[podiumIndex]}
+                        alt={`Podium Position ${podiumIndex + 1}`}
+                        width={1200}
+                        height={600}
+                        className="rounded-lg border border-white/20 object-cover aspect-[4/3]"
+                    ></Image>
+                </div>
 
                 <button
                     onClick={podiumNext}
@@ -232,6 +234,20 @@ export default function TournamentDetailPage({ tournamentId }: TournamentDetailP
                     &#10095;
                 </button>
             </div>
+
+            <h2 style={{
+                fontSize: '2rem',
+                fontWeight: 700,
+                textAlign: 'center',
+                marginBottom: '30px',
+                textTransform: 'uppercase',
+            }}>
+                GALLERY
+            </h2>
+
+            {/**
+             * TODO: Nesting div issue address later
+             */}
 
             <Masonry
                 breakpointCols={masonryBreakpoints}
