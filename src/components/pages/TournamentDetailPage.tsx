@@ -261,7 +261,6 @@ export default function TournamentDetailPage() {
 
                         <motion.img src={zoomImages[tournament.id][selectedIndex]}
                             className='max-h-[90vh] max-w-[90vw] object-contain rounded-lg'
-                            loading='lazy'
                             decoding='async'
                             onClick={(e: React.MouseEvent) => e.stopPropagation()}
                             initial={{ scale: 1, opacity: 0 }}
