@@ -5,6 +5,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { usePageContext } from '@/context/PageContext';
 import Masonry from 'react-masonry-css';
 import galleryImagesData from '@/data/galleryImages.json';
+import zoomImagesData from '@/data/zoomImages.json';
 import { AnimatePresence, motion } from 'framer-motion';
 
 interface TournamentDetailPageProps {
@@ -46,6 +47,8 @@ export default function TournamentDetailPage({ tournamentId }: TournamentDetailP
     const description = language === 'vi' ? tournament.fullDescriptionVi : tournament.fullDescription;
 
     const galleryImages = galleryImagesData as Record<string, string[]>;
+    const zoomImages = zoomImagesData as Record<string, string[]>;
+
     const podiumImages = tournament.record.topThreePhoto;
 
     const prev = () => {
@@ -239,16 +242,25 @@ export default function TournamentDetailPage({ tournamentId }: TournamentDetailP
                     <div
                         key={index}
                     >
-                        <img src={imageUrl} alt={`Gallery ${index + 1}`} onClick={() => setSelectedIndex(index)}
+                        <img decoding='async' loading='lazy' src={imageUrl} alt={`Gallery ${index + 1}`} onClick={() => setSelectedIndex(index)}
                             style={{
                                 width: '100%',
+                                aspectRatio: '4 / 3',
                                 marginBottom: '15px',
                                 borderRadius: '8px',
-                                aspectRatio: '4 / 3',
                                 objectFit: 'cover',
                                 border: '1px solid rgba(255, 255, 255, 0.2)',
                             }}
                         />
+
+                        {/* <Image
+                            src={imageUrl}
+                            loading='lazy'
+                            decoding='async'
+                            alt={`Gallery ${index + 1}`}
+                            onClick={() => setSelectedIndex(index)}
+                            sizes="(max-width: 600px) 100vw, 33vw"
+                        ></Image> */}
                     </div>
                 ))}
             </Masonry>
@@ -275,8 +287,10 @@ export default function TournamentDetailPage({ tournamentId }: TournamentDetailP
                             &#10094;
                         </button>
 
-                        <motion.img src={galleryImages[tournament.id][selectedIndex]}
+                        <motion.img src={zoomImages[tournament.id][selectedIndex]}
                             className='max-h-[90vh] max-w-[90vw] object-contain rounded-lg'
+                            loading='lazy'
+                            decoding='async'
                             onClick={(e: React.MouseEvent) => e.stopPropagation()}
                             initial={{ scale: 1, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
