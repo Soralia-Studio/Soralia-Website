@@ -7,7 +7,7 @@ import { useLanguage } from '@/context/LanguageContext';
 
 export default function StaffPage() {
     const { language } = useLanguage();
-    
+
     return (
         <main style={{
             margin: 'clamp(40px, 10vw, 80px) 0 clamp(50px, 10vw, 100px) 0',

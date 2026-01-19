@@ -31,9 +31,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${poppins.variable} antialiased`}
-        style={{ 
-          margin: 0, 
-          padding: 0, 
+        style={{
+          margin: 0,
+          padding: 0,
           fontFamily: 'var(--font-poppins), sans-serif',
           minHeight: '100vh',
           backgroundImage: 'url("/placeholders/Background.png")',

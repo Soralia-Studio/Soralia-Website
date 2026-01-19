@@ -10,24 +10,31 @@ interface TournamentCardProps {
   imageUrl: string;
 }
 
+/**
+ * TournamentCard Component
+ * 
+ * Displays a tournament card with image, title, and description.
+ * Navigates to tournament detail page when clicked using PageContext.
+ * 
+ * @param id - Unique tournament identifier
+ * @param title - Tournament title
+ * @param description - Tournament description
+ * @param imageUrl - Tournament cover image URL
+ */
 export default function TournamentCard({ id, title, description, imageUrl }: TournamentCardProps) {
   const { setSelectedTournamentId, navigateToPage } = usePageContext();
-
-  console.log('TournamentCard render - id:', id);
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('TournamentCard clicked:', id);
     if (id) {
       setSelectedTournamentId(id);
-      console.log('Calling navigateToPage with tournament-detail');
       navigateToPage('tournament-detail');
     }
   };
 
   const CardContent = (
-    <article 
+    <article
       onClick={id ? handleClick : undefined}
       style={{
         background: 'rgba(0, 0, 0, 0.8)',

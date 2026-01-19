@@ -3,6 +3,24 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 
+/**
+ * PageContext - Client-side Navigation System
+ * 
+ * Custom navigation context that replaces Next.js routing to enable:
+ * - Smooth fade transitions between pages (300ms fade out → 50ms fade in)
+ * - URL updates without page reload (using window.history.pushState)
+ * - Tournament detail state management
+ * 
+ * Why not Next.js routing?
+ * - router.push() triggers full page reload, breaking animations
+ * - We need fine control over transition timing
+ * - Tournament details share /tournaments URL but different page state
+ * 
+ * Usage:
+ * const { navigateToPage, currentPage } = usePageContext();
+ * navigateToPage('tournaments'); // Fades to tournaments page with URL update
+ */
+
 export type PageType = 'home' | 'tournaments' | 'staff' | 'tournament-detail';
 
 interface PageContextType {
@@ -19,21 +37,28 @@ const PageContext = createContext<PageContextType | undefined>(undefined);
 
 export const PageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const pathname = usePathname();
-    
-    // Initialize currentPage based on current URL
+
+    /**
+     * Maps URL pathname to PageType
+     * Used for initial page load and browser back/forward navigation
+     */
     const getPageFromPathname = useCallback((path: string): PageType => {
         if (path === '/') return 'home';
         if (path === '/staff') return 'staff';
         if (path === '/tournaments') return 'tournaments';
         return 'home';
     }, []);
-    
+
     const [currentPage, setCurrentPage] = useState<PageType>(() => getPageFromPathname(pathname));
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [selectedTournamentId, setSelectedTournamentId] = useState<string | null>(null);
 
-    // Sync currentPage with URL changes (for browser back/forward)
-    // BUT don't override tournament-detail page
+    /**
+     * Syncs page state with URL changes from browser back/forward buttons
+     * 
+     * Critical: Prevents tournament-detail page from resetting to tournaments list
+     * when URL is /tournaments but we're viewing a specific tournament.
+     */
     useEffect(() => {
         const pageFromPath = getPageFromPathname(pathname);
         // Don't reset if we're on tournament-detail and pathname is /tournaments
@@ -45,32 +70,43 @@ export const PageProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
     }, [pathname, currentPage, isTransitioning, getPageFromPathname]);
 
+    /**
+     * Navigate to a different page with fade transition
+     * 
+     * Timeline:
+     * 1. Start fade out (opacity 0, 300ms)
+     * 2. Change page state
+     * 3. Update URL via window.history.pushState (no page reload)
+     * 4. Fade in (opacity 1, 50ms)
+     * 
+     * @param page - Target page to navigate to
+     */
     const navigateToPage = useCallback((page: PageType) => {
         if (page === currentPage) return;
 
-        // Start fade out
+        // Start fade out transition
         setIsTransitioning(true);
 
-        // After fade out, change page and URL, then fade in
+        // After fade out completes, update page and URL
         setTimeout(() => {
             setCurrentPage(page);
-            
-            // Update URL without triggering Next.js navigation (no page reload)
+
+            // Map page types to URL paths
             const urlMap: Record<PageType, string> = {
                 'home': '/',
                 'tournaments': '/tournaments',
                 'staff': '/staff',
-                'tournament-detail': '/tournaments',
+                'tournament-detail': '/tournaments', // Detail shares /tournaments URL
             };
-            
+
             const newUrl = urlMap[page];
-            
-            // Use window.history.pushState to update URL without page reload
+
+            // Update browser URL without triggering navigation/reload
             if (window.location.pathname !== newUrl) {
                 window.history.pushState({}, '', newUrl);
             }
-            
-            // Fade in
+
+            // Quick fade in after state update
             setTimeout(() => {
                 setIsTransitioning(false);
             }, 50);

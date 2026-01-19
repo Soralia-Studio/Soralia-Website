@@ -15,7 +15,7 @@ import TournamentDetailPage from '@/components/pages/TournamentDetailPage';
 export default function TournamentDetail() {
     const params = useParams();
     const tournamentId = params.id as string;
-    
+
     return (
         <LanguageProvider>
             <div style={{

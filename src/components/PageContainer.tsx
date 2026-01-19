@@ -10,13 +10,22 @@ import TournamentDetailPage from './pages/TournamentDetailPage';
 /**
  * PageContainer Component
  * 
- * Container that renders the current page based on navigation state.
- * Handles page transitions with opacity animation.
+ * Central page renderer that displays the current page based on navigation state.
+ * Manages fade transitions (300ms out, 50ms in) between page changes.
+ * 
+ * Pages:
+ * - home: Landing page with hero section
+ * - tournaments: Tournament list page
+ * - staff: Staff member grid
+ * - tournament-detail: Individual tournament details
+ * 
+ * State managed by PageContext:
+ * - currentPage: Active page type
+ * - isTransitioning: Fade animation state
+ * - selectedTournamentId: Tournament ID for detail page
  */
 export default function PageContainer() {
     const { currentPage, isTransitioning, selectedTournamentId } = usePageContext();
-
-    console.log('PageContainer - currentPage:', currentPage, 'selectedTournamentId:', selectedTournamentId);
 
     const renderPage = () => {
         switch (currentPage) {
