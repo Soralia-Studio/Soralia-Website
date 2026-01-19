@@ -123,20 +123,21 @@ export default function TournamentsPage() {
             `}</style>
             <main style={{
                 margin: '0',
-                padding: '120px 40px 60px 40px',
+                padding: 'clamp(80px, 15vw, 120px) clamp(15px, 4vw, 40px) clamp(40px, 8vw, 60px)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 minHeight: '100vh',
                 width: '100%',
                 position: 'relative',
+                overflowX: 'hidden',
             }}>
                 <div style={{
                     width: '100%',
                     maxWidth: '1000px',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '25px',
+                    gap: 'clamp(15px, 3vw, 25px)',
                 }}>
                     {tournaments.map((tournament) => (
                         <div
@@ -153,7 +154,7 @@ export default function TournamentsPage() {
                     ))}
 
                     {/* Xaxalele thingy*/}
-                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '32px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'clamp(20px, 5vw, 32px)' }}>
                         <div
                             className="xaxalele-box"
                             onClick={handleBoxXaxaleleClick}
@@ -162,7 +163,7 @@ export default function TournamentsPage() {
                             style={{
                                 width: '100%',
                                 maxWidth: '950px',
-                                height: '160px',
+                                height: 'clamp(100px, 20vw, 160px)',
                                 borderRadius: '20px',
                                 overflow: 'hidden',
                                 cursor: 'pointer',
@@ -186,7 +187,7 @@ export default function TournamentsPage() {
                             }}>
                                 <span className="glitch-text" style={{
                                     color: 'white',
-                                    fontSize: '2rem',
+                                    fontSize: 'clamp(1.2rem, 4vw, 2rem)',
                                     fontWeight: 600,
                                     textTransform: 'uppercase',
                                     textShadow: '0 0 10px rgba(255,0,0,0.5), 0 0 20px rgba(0,255,255,0.5), 0 2px 10px rgba(0,0,0,0.7)',

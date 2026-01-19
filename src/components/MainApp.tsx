@@ -43,7 +43,8 @@ export default function MainApp() {
                 className={poppins.className}
                 style={{
                     minHeight: '100vh',
-                    width: '100vw',
+                    width: '100%',
+                    maxWidth: '100vw',
                     margin: 0,
                     padding: 0,
                     overflowX: 'hidden',
@@ -51,7 +52,7 @@ export default function MainApp() {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
-                    backgroundAttachment: 'fixed',
+                    backgroundAttachment: 'scroll', // Changed from fixed for better mobile performance
                     color: 'white',
                     display: 'flex',
                     flexDirection: 'column',

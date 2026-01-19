@@ -27,7 +27,7 @@ export const tournaments: Tournament[] = [
     shortDescription:
       "MSOC (MAIMAI STUDENT OPEN CUP) – The Student Showdown! Hosted at Dream Games Tan Phu, students represent their schools in a unique 1v1 (Team up 4) stamina format to claim the championship",
     fullDescription:
-      "Organized by Area 57 Studio at Dream Games Tan Phu, MSOC is a dedicated rhythm game tournament for students. Featuring a unique 1v1 (Team up 4) stamina format, the event successfully brought together competitive teams representing various high schools and universities for an intense showdown.\n\nTOP 3 WINNERS\n\n• Champion: Team GLHF (SGU, NTTU, Pham Phu Thu HS, TDTU)\n• Runner-up: Team maimai.py (UIT)\n• 3rd Place: Team SoiCoDoc (HCMUTE, VHU, VSVC)",
+      "Organized by Area 57 Studio (Soralia Studio currently) at Dream Games Tan Phu, MSOC is a dedicated rhythm game tournament for students. Featuring a unique 1v1 (Team up 4) stamina format, the event successfully brought together competitive teams representing various high schools and universities for an intense showdown.\n\nTOP 3 WINNERS\n\n• Champion: Team GLHF (SGU, NTTU, Pham Phu Thu HS, TDTU)\n• Runner-up: Team maimai.py (UIT)\n• 3rd Place: Team SoiCoDoc (HCMUTE, VHU, VSVC)",
     videoHolder: "https://www.youtube.com/embed/Rj9NVKV2Ozk?si=cPVtWG1xNupR9Z7z",
     mainImage: "/tournaments/MSOC/logo MSOC.png",
     galleryImagesPath: "/tournaments/MSOC/gallery",

@@ -14,8 +14,13 @@ const StaffCard: React.FC<StaffCardProps> = ({ name, role, avatarUrl, bannerUrl 
     <div className="container relative transition-all duration-300 hover:brightness-110 hover:saturate-110">
       <div className='relative flex shrink-0 items-center p-1'>
         {/* Avatar and Info */}
-        <div className="bg-white relative w-12 h-12 overflow-hidden rounded-l-lg">
-          <Image 
+        <div className="bg-white relative overflow-hidden rounded-l-lg" style={{
+          width: 'clamp(40px, 10vw, 48px)',
+          height: 'clamp(40px, 10vw, 48px)',
+          minWidth: '40px',
+          minHeight: '40px',
+        }}>
+          <Image
             src={avatarUrl}
             alt={`${name} Avatar`}
             fill
@@ -24,30 +29,43 @@ const StaffCard: React.FC<StaffCardProps> = ({ name, role, avatarUrl, bannerUrl 
         </div>
 
         {/* Banner */}
-        <div className='relative flex flex-1 w-full h-12 overflow-hidden shadow-lg p-2 rounded-r-lg'>
+        <div className='relative flex flex-1 w-full overflow-hidden shadow-lg p-2 rounded-r-lg' style={{
+          height: 'clamp(40px, 10vw, 48px)',
+          minHeight: '40px',
+        }}>
           <Image
             src={bannerUrl}
             alt={`${name} Banner`}
             fill
             className='object-cover'
           />
-          
+
           {/* Gradient */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
 
           {/* Name and Role */}
-          <div className="font-sans relative z-10 left-1.5 flex flex-col items-start justify-center">
+          <div className="font-sans relative z-10 left-1.5 flex flex-col items-start justify-center" style={{
+            overflow: 'hidden',
+          }}>
             <div style={{
-              paddingBottom: '0.2rem',
-              fontSize: '1.15rem',
+              paddingBottom: '0.1rem',
+              fontSize: 'clamp(0.9rem, 2.5vw, 1.15rem)',
               fontWeight: 600,
               textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7)',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '100%',
             }}>
               {name}
             </div>
             <div style={{
-              fontSize: '0.875rem',
-              fontStyle: 'italic'
+              fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
+              fontStyle: 'italic',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '100%',
             }}>
               {role}
             </div>

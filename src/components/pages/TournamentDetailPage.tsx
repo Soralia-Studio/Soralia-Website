@@ -4,8 +4,7 @@ import { tournaments } from '../../data/data';
 import { usePageContext } from '@/context/PageContext';
 import Masonry from 'react-masonry-css';
 import galleryImagesData from '@/data/galleryImages.json';
-import { AnimatePresence, motion } from 'motion/react';
-import { div } from 'motion/react-client';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function TournamentDetailPage() {
     const { selectedTournamentId } = usePageContext();
@@ -114,25 +113,25 @@ export default function TournamentDetailPage() {
 
             {/* Video Placeholder */}
             <div style={{
-            width: '100%',
-            maxWidth: '900px',
-            aspectRatio: '16 / 9',
-            borderRadius: '16px',
-            overflow: 'hidden',
-            marginBottom: '40px',
-            border: '2px solid rgba(255, 255, 255, 0.2)',
+                width: '100%',
+                maxWidth: '900px',
+                aspectRatio: '16 / 9',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                marginBottom: '40px',
+                border: '2px solid rgba(255, 255, 255, 0.2)',
             }}>
-            <iframe
-                src={tournament.videoHolder}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{
-                    width: '100%',
-                    height: '100%',
-                    border: '0',
-                }}
-            />
+                <iframe
+                    src={tournament.videoHolder}
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        border: '0',
+                    }}
+                />
             </div>
 
             {/* Gallery Section */}
@@ -212,7 +211,7 @@ export default function TournamentDetailPage() {
                     <div
                         key={index}
                     >
-                        <img src={imageUrl} alt={`Gallery ${index + 1}`} onClick={() => setSelectedIndex(index)} 
+                        <img src={imageUrl} alt={`Gallery ${index + 1}`} onClick={() => setSelectedIndex(index)}
                             style={{
                                 width: '100%',
                                 marginBottom: '15px',
@@ -227,49 +226,49 @@ export default function TournamentDetailPage() {
             </Masonry>
 
             <AnimatePresence>
-            {selectedIndex !== null && (
-                <motion.div
-                    className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center"
-                    onClick={close}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                >
+                {selectedIndex !== null && (
+                    <motion.div
+                        className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center"
+                        onClick={close}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                    >
 
-                <button
-                    onClick={e => {
-                        e.stopPropagation();
-                        prev();
-                    }}
+                        <button
+                            onClick={(e: React.MouseEvent) => {
+                                e.stopPropagation();
+                                prev();
+                            }}
 
-                    className='absolute left-4 text-white text-4xl opacity-70 hover:opacity-100 select-none'
-                >
-                    &#10094;
-                </button>
+                            className='absolute left-4 text-white text-4xl opacity-70 hover:opacity-100 select-none'
+                        >
+                            &#10094;
+                        </button>
 
-                <motion.img src={galleryImages[tournament.id][selectedIndex]}  
-                    className='max-h-[90vh] max-v-[90vw] object-contain rounded-lg'
-                    onClick={e => e.stopPropagation()}
-                    initial={{ scale: 1, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 1, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: 'easeOut' }}
-                />
+                        <motion.img src={galleryImages[tournament.id][selectedIndex]}
+                            className='max-h-[90vh] max-w-[90vw] object-contain rounded-lg'
+                            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                            initial={{ scale: 1, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 1, opacity: 0 }}
+                            transition={{ duration: 0.25, ease: 'easeOut' }}
+                        />
 
-                <button
-                    onClick={e => {
-                        e.stopPropagation();
-                        next();
-                    }}
+                        <button
+                            onClick={(e: React.MouseEvent) => {
+                                e.stopPropagation();
+                                next();
+                            }}
 
-                    className='absolute right-5 text-white text-4xl opacity-70 hover:opacity-100 select-none'
-                >
-                    &#10095;
-                </button>
-            </motion.div>
-            )}
-        </AnimatePresence>
+                            className='absolute right-5 text-white text-4xl opacity-70 hover:opacity-100 select-none'
+                        >
+                            &#10095;
+                        </button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </main>
     );
 }

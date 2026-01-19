@@ -13,7 +13,7 @@ import MessageOfTheDay from '@/script/messageOfTheDay';
  */
 export default function HomePage() {
     const contentRef = useRef<HTMLDivElement>(null);
-    
+
     const vineBoomRef = useRef<HTMLAudioElement>(null);
     const tsunagiteRef = useRef<HTMLAudioElement>(null);
 
@@ -24,14 +24,14 @@ export default function HomePage() {
     }, []);
 
     const playVineBoom = (e: React.MouseEvent) => {
-        if(vineBoomRef.current) {
+        if (vineBoomRef.current) {
             e.stopPropagation();
             vineBoomRef.current.play();
         }
     }
 
     const playTsunagite = (e: React.MouseEvent) => {
-        if(tsunagiteRef.current) {
+        if (tsunagiteRef.current) {
             e.stopPropagation();
             tsunagiteRef.current.play();
         }
@@ -51,6 +51,7 @@ export default function HomePage() {
             textAlign: 'center',
             position: 'relative',
             overflowY: 'auto',
+            overflowX: 'hidden',
             height: '100vh',
         }}>
             {/* First section - Logo and Text */}
@@ -60,30 +61,37 @@ export default function HomePage() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 minHeight: '100vh',
-                paddingBottom: '20px',
+                padding: '20px',
+                paddingBottom: '40px',
             }}>
                 {/* Logo - always visible (splash handles reveal) */}
                 <div style={{
-                    marginBottom: '30px',
+                    marginBottom: '20px',
+                    width: '100%',
+                    maxWidth: '450px',
+                    aspectRatio: '1/1',
+                    position: 'relative',
                 }}>
                     <Image
                         src="/placeholders/soraalia.png"
                         alt="Soralia Studio Logo"
-                        width={450}
-                        height={450}
+                        fill
                         style={{
                             filter: 'drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6))',
+                            objectFit: 'contain',
                         }}
                     />
                 </div>
 
                 <h1 style={{
-                    fontSize: '2.8rem',
+                    fontSize: 'clamp(1.5rem, 5vw, 2.8rem)',
                     fontWeight: 600,
                     color: 'white',
                     textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
                     marginBottom: '40px',
                     marginTop: '10px',
+                    padding: '0 20px',
+                    maxWidth: '90%',
                 }}>
                     {message}
                 </h1>
@@ -100,7 +108,7 @@ export default function HomePage() {
                     onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
                     onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
                 >
-                    <svg width="70" height="70" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg style={{ width: 'clamp(50px, 10vw, 70px)', height: 'clamp(50px, 10vw, 70px)' }} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7 10L12 15L17 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M7 14L12 19L17 14" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
                     </svg>
@@ -129,29 +137,41 @@ export default function HomePage() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: '60px 40px',
+                    padding: 'clamp(30px, 8vw, 60px) clamp(20px, 5vw, 40px)',
                 }}
             >
                 <div style={{
                     maxWidth: '900px',
+                    width: '100%',
                     color: 'rgba(255, 255, 255, 0.85)',
-                    fontSize: '0.95rem',
+                    fontSize: 'clamp(0.85rem, 2vw, 0.95rem)',
                     lineHeight: '1.8',
                     textAlign: 'justify',
                     backgroundColor: 'rgba(0, 0, 0, 0.5)',
                     backdropFilter: 'blur(10px)',
-                    padding: '30px',
+                    padding: 'clamp(20px, 4vw, 30px)',
                     borderRadius: '16px',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                 }}>
-                    <Image
-                        src={cafe.image}
-                        alt='manhattan cafe'
-                        width={600}
-                        height={600}
-                        loading= 'eager'
-                        onClick={playVineBoom}
-                    ></Image>
+                    <div style={{
+                        position: 'relative',
+                        width: '100%',
+                        maxWidth: '600px',
+                        aspectRatio: '1/1',
+                        margin: '0 auto',
+                    }}>
+                        <Image
+                            src={cafe.image}
+                            alt='manhattan cafe'
+                            fill
+                            loading='eager'
+                            onClick={playVineBoom}
+                            style={{
+                                objectFit: 'contain',
+                                cursor: 'pointer',
+                            }}
+                        />
+                    </div>
                     <audio ref={vineBoomRef} src="/audio/vine-boom.mp3" />
                 </div>
             </div>

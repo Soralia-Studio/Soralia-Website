@@ -13,9 +13,14 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Soralia Studio",
-  description: "Discover the best gaming tournaments and events",
+  description: "Soralia Studio Official Website",
   icons: {
     icon: '/placeholders/soraalia.png',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
   },
 };
 

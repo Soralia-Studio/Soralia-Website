@@ -34,16 +34,16 @@ export default function TournamentCard({ id, title, description, imageUrl }: Tou
       <div style={{
         display: 'flex',
         flexDirection: 'row',
-        minHeight: '160px',
+        minHeight: 'clamp(120px, 20vw, 160px)',
       }}>
         {/* Image on the left - rounded square */}
         <div style={{
           position: 'relative',
-          width: '220px',
-          height: '160px',
+          width: 'clamp(140px, 25vw, 220px)',
+          height: 'clamp(120px, 20vw, 160px)',
           flexShrink: 0,
           overflow: 'hidden',
-          padding: '15px',
+          padding: 'clamp(10px, 2vw, 15px)',
         }}>
           <div style={{
             position: 'relative',
@@ -57,7 +57,7 @@ export default function TournamentCard({ id, title, description, imageUrl }: Tou
               alt={title}
               fill
               style={{ objectFit: 'cover' }}
-              sizes="190px"
+              sizes="(max-width: 640px) 140px, 220px"
             />
           </div>
         </div>
@@ -65,24 +65,30 @@ export default function TournamentCard({ id, title, description, imageUrl }: Tou
         {/* Content on the right */}
         <div style={{
           flex: 1,
-          padding: '20px 25px',
+          padding: 'clamp(15px, 3vw, 25px)',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
+          minWidth: 0,
         }}>
           <h2 style={{
-            fontSize: '1.8rem',
+            fontSize: 'clamp(1.2rem, 3.5vw, 1.8rem)',
             fontWeight: 700,
             color: 'white',
             textTransform: 'uppercase',
-            marginBottom: '12px',
+            marginBottom: 'clamp(8px, 2vw, 12px)',
             letterSpacing: '0.5px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
           }}>
             {title}
           </h2>
           <p style={{
             color: 'rgba(255, 255, 255, 0.85)',
-            fontSize: '0.95rem',
+            fontSize: 'clamp(0.8rem, 2vw, 0.95rem)',
             lineHeight: '1.6',
             overflow: 'hidden',
             display: '-webkit-box',

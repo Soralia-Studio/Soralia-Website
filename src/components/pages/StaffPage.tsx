@@ -7,33 +7,36 @@ import { staffMembers } from '../../data/data';
 export default function StaffPage() {
     return (
         <main style={{
-            margin: '80px 0 100px 0',
-            padding: '80px 0 100px 0',
+            margin: 'clamp(40px, 10vw, 80px) 0 clamp(50px, 10vw, 100px) 0',
+            padding: 'clamp(40px, 10vw, 80px) clamp(15px, 3vw, 30px) clamp(50px, 10vw, 100px)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'flex-start',
-            height: '100vh',
+            minHeight: '100vh',
             width: '100%',
             textAlign: 'center',
             position: 'relative',
+            overflowX: 'hidden',
         }}>
             <h1 style={{
-                fontSize: '2.5rem',
-                marginBottom: '50px',
+                fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
+                marginBottom: 'clamp(30px, 6vw, 50px)',
                 fontWeight: 600,
                 letterSpacing: '1px',
                 textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+                padding: '0 20px',
             }}>Our Staff</h1>
 
             <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                gap: '1rem',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+                gap: 'clamp(0.8rem, 2vw, 1rem)',
                 maxWidth: '1200px',
-                width: '90%',
+                width: '100%',
                 margin: '0 auto',
                 gridAutoFlow: 'row',
+                padding: '0 10px',
             }}>
                 {staffMembers.map((staff) => (
                     <StaffCard
