@@ -83,6 +83,8 @@ export default function TournamentCard({ id, title, description, imageUrl }: Tou
             <Image
               src={imageUrl}
               alt={title}
+              loading="eager"
+              decoding="async"
               fill
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 640px) 140px, 220px"
